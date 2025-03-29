@@ -8,35 +8,66 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Mono&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
-
 </head>
 <body>
     <div class="stars"></div>
     <div class="twinkling"></div>
-    <div class="particles-container" id="particles-js"></div>
     
-    <header>
-        <div class="logo">
-            <div class="logo-icon">
-                <div class="planet-ring"></div>
-                <div class="planet-circle"></div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <div class="planet-ring"></div>
+                        <div class="planet-circle"></div>
+                    </div>
+                    <h1>Galactic Guide</h1>
+                </div>
+                <button class="close-menu-btn" id="close-menu-btn">&times;</button>
             </div>
-            <h1>Galactic Guide</h1>
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#solar-system" class="nav-link">Solar System</a></li>
+                    <li><a href="#outer-space" class="nav-link">Outer Space</a></li>
+                    <li><a href="#space-exploration" class="nav-link">Exploration</a></li>
+                </ul>
+            </nav>
         </div>
-        <p>Explore the wonders of our universe</p>
-        <nav>
-            <ul>
-                <li><a href="#home" class="nav-link active">Home</a></li>
-                <li><a href="#solar-system" class="nav-link">Solar System</a></li>
-                <li><a href="#outer-space" class="nav-link">Outer Space</a></li>
-                <li><a href="#space-exploration" class="nav-link">Exploration</a></li>
-            </ul>
-        </nav>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="header-left">
+                <button class="menu-btn" id="menu-btn">
+                    <span class="menu-icon"></span>
+                </button>
+                <div class="logo">
+                    <div class="logo-icon">
+                        <div class="planet-ring"></div>
+                        <div class="planet-circle"></div>
+                    </div>
+                    <div>
+                        <h1>Galactic Guide</h1>
+                        <p>Explore the wonders of our universe</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#home" class="nav-link active">Home</a></li>
+                    <li><a href="#solar-system" class="nav-link">Solar System</a></li>
+                    <li><a href="#outer-space" class="nav-link">Outer Space</a></li>
+                    <li><a href="#space-exploration" class="nav-link">Exploration</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <main>
+        <!-- Home Section -->
         <section id="home" class="active">
             <div class="container">
                 <h2>Choose Your Cosmic Journey</h2>
@@ -50,7 +81,7 @@
                             <img src="https://static.vecteezy.com/system/resources/previews/001/953/347/original/planets-of-the-solar-system-infographic-free-vector.jpg" alt="Solar System">
                         </div>
                         <h3>Solar System</h3>
-                        <p>Explore the planets of our solar system in interactive 3D</p>
+                        <p>Explore the planets of our solar system</p>
                     </div>
                     <div class="option" id="outer-space-option">
                         <div class="option-image">
@@ -99,6 +130,7 @@
             </div>
         </section>
 
+        <!-- Solar System Section -->
         <section id="solar-system">
             <div class="back-button">← Back to Home</div>
             <h2>Our Solar System</h2>
@@ -109,20 +141,6 @@
                     <p>Beyond Neptune, a newer class of smaller worlds called dwarf planets reign, including longtime favorite Pluto. Thousands more planets have been discovered beyond our solar system. Scientists call them exoplanets (exo means "from outside").</p>
                 </div>
 
-                <div class="view-toggle">
-                    <button class="view-btn active" data-view="3d">3D View</button>
-                    <button class="view-btn" data-view="list">List View</button>
-                </div>
-                <div id="solar-system-3d" class="active-view">
-                    <video id="solar-video" width="100%" controls autoplay>
-                        <source src="./4k video ultra hd solar system  space travel in (sun) moon and mars earth - Trim.mp4" type="video/mp4">
-                    </video>
-                </div>                
-                
-                <div id="solar-system-3d" class="active-view">
-                    <!-- Three.js canvas will be inserted here -->
-                </div>
-                
                 <div id="planets-list" class="planets-container">
                     <div class="planet" data-planet="mercury">
                         <div class="planet-image">
@@ -200,6 +218,7 @@
             </div>
         </section>
 
+        <!-- Outer Space Section -->
         <section id="outer-space">
             <div class="back-button">← Back to Home</div>
             <h2>Outer Space Objects</h2>
@@ -283,8 +302,8 @@
             
             <div class="cosmic-scale">
                 <h3>The Cosmic Scale</h3>
-                <div class="scale-slider">
-                    <input type="range" min="1" max="10" value="5" class="slider" id="cosmic-scale-slider">
+                <div class="scale-slider-container">
+                    <input type="range" min="1" max="5" value="5" class="slider" id="cosmic-scale-slider">
                     <div class="scale-labels">
                         <span>Planets</span>
                         <span>Stars</span>
@@ -299,6 +318,7 @@
             </div>
         </section>
         
+        <!-- Space Exploration Section -->
         <section id="space-exploration">
             <div class="back-button">← Back to Home</div>
             <h2>Space Exploration</h2>
@@ -419,19 +439,6 @@
                 </div>
             </div>
         </div>
-        
-        <div id="glossary-modal" class="modal">
-            <div class="modal-content glossary-content">
-                <span class="close-button">&times;</span>
-                <h3>Space Glossary</h3>
-                <div class="glossary-search">
-                    <input type="text" id="glossary-search" placeholder="Search terms...">
-                </div>
-                <div id="glossary-items">
-                    <!-- Glossary items will be dynamically inserted here -->
-                </div>
-            </div>
-        </div>
     </main>
 
     <footer>
@@ -447,7 +454,6 @@
                     <li><a href="#solar-system">Solar System</a></li>
                     <li><a href="#outer-space">Outer Space</a></li>
                     <li><a href="#space-exploration">Exploration</a></li>
-                    <li><a href="#" id="glossary-link">Space Glossary</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -464,7 +470,6 @@
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

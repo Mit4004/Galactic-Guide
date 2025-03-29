@@ -36,7 +36,7 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-    font-size: 3.5rem;
+    font-size: 2.5rem;
     letter-spacing: 2px;
 }
 
@@ -44,6 +44,7 @@ h2 {
     font-size: 2.5rem;
     margin-bottom: 1.5rem;
     text-shadow: 0 0 10px rgba(110, 0, 255, 0.5);
+    text-align: center;
 }
 
 h3 {
@@ -107,26 +108,115 @@ ul {
     to {background-position: -10000px 5000px;}
 }
 
-.particles-container {
+/* Mobile Menu */
+.mobile-menu {
     position: fixed;
     top: 0;
-    left: 0;
+    right: -100%;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    transition: right 0.3s ease;
+}
+
+.mobile-menu.open {
+    right: 0;
+}
+
+.mobile-menu-content {
+    padding: 2rem;
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.close-menu-btn {
+    font-size: 2rem;
+    color: white;
+    background: none;
+}
+
+.mobile-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mobile-nav .nav-link {
+    display: block;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.mobile-nav .nav-link:hover,
+.mobile-nav .nav-link.active {
+    background-color: rgba(110, 0, 255, 0.2);
 }
 
 /* Header */
 header {
-    padding: 1.5rem 2rem;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
     position: sticky;
     top: 0;
     z-index: 100;
+    padding: 0.75rem (0,0,0.8), (transparent);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0.75rem 1rem;
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    color: white;
+}
+
+.menu-icon {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background-color: white;
+    position: relative;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 3px;
+    background-color: white;
+    left: 0;
+}
+
+.menu-icon::before {
+    top: -8px;
+}
+
+.menu-icon::after {
+    bottom: -8px;
 }
 
 .logo {
@@ -163,17 +253,18 @@ header {
     transform: rotate(-20deg);
 }
 
-header p {
-    font-size: 1.2rem;
+.logo h1 {
+    margin-bottom: 0;
+    font-size: 1.8rem;
+}
+
+.logo p {
+    font-size: 0.9rem;
     opacity: 0.8;
     margin-bottom: 0;
 }
 
-nav {
-    margin-left: auto;
-}
-
-nav ul {
+.desktop-nav ul {
     display: flex;
     gap: 1.5rem;
 }
@@ -399,67 +490,24 @@ section.active {
 }
 
 /* Solar System Section */
-#solar-system h2, #outer-space h2, #space-exploration h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
-    text-shadow: 0 0 10px rgba(110, 0, 255, 0.5);
-}
-
-.solar-system-container, .outer-space-intro, .exploration-intro {
+.solar-system-container {
     max-width: 1000px;
     margin: 0 auto;
 }
 
-.solar-system-info, .outer-space-intro, .exploration-intro {
+.solar-system-info {
     text-align: center;
     margin-bottom: 3rem;
     font-size: 1.1rem;
     line-height: 1.8;
 }
 
-/* View Toggle */
-.view-toggle {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
-}
-
-.view-btn {
-    padding: 0.6rem 1.2rem;
-    background: rgba(26, 26, 74, 0.7);
-    color: var(--text);
-    border-radius: 5px;
-    margin: 0 0.5rem;
-    font-weight: 600;
-}
-
-.view-btn.active, .view-btn:hover {
-    background: var(--primary);
-    color: white;
-}
-
-/* 3D Solar System */
-#solar-system-3d {
-    height: 600px;
-    margin-bottom: 3rem;
-    display: none;
-}
-
-#solar-system-3d.active-view {
-    display: block;
-}
-
 /* Planets List */
-#planets-list {
+.planets-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 2rem;
     margin-bottom: 3rem;
-}
-
-#planets-list.active-view {
-    display: grid;
 }
 
 .planet, .space-object {
@@ -608,6 +656,14 @@ section.active {
 }
 
 /* Outer Space Section */
+.outer-space-intro {
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
 .categories-filter {
     display: flex;
     justify-content: center;
@@ -634,6 +690,9 @@ section.active {
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 2rem;
     margin-bottom: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Cosmic Scale */
@@ -643,8 +702,9 @@ section.active {
     text-align: center;
 }
 
-.scale-slider {
+.scale-slider-container {
     margin: 2rem 0;
+    position: relative;
 }
 
 .slider {
@@ -654,6 +714,7 @@ section.active {
     background: rgba(255, 255, 255, 0.1);
     outline: none;
     -webkit-appearance: none;
+    margin-bottom: 1rem;
 }
 
 .slider::-webkit-slider-thumb {
@@ -673,13 +734,6 @@ section.active {
     color: rgba(224, 224, 255, 0.7);
 }
 
-#solar-video {
-    max-width: 100%;
-    border-radius: 10px;
-    display: block;
-    margin: auto;
-}
-
 #scale-description {
     margin-top: 2rem;
     padding: 1.5rem;
@@ -689,6 +743,15 @@ section.active {
 }
 
 /* Space Exploration Section */
+.exploration-intro {
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* Timeline */
 .timeline {
     margin: 3rem auto;
     max-width: 800px;
@@ -876,101 +939,6 @@ section.active {
     color: #ffffff;
 }
 
-#detail-content {
-    margin-top: 1rem;
-}
-
-#detail-content h3 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    text-align: center;
-}
-
-#detail-content .detail-image {
-    width: 100%;
-    max-height: 300px;
-    overflow: hidden;
-    border-radius: 10px;
-    margin-bottom: 1.5rem;
-}
-
-#detail-content .detail-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-#detail-content p {
-    margin-bottom: 1rem;
-    line-height: 1.6;
-}
-
-#detail-content .fact-list {
-    margin: 1.5rem 0;
-}
-
-#detail-content .fact-list li {
-    margin-bottom: 0.8rem;
-    padding-left: 1.5rem;
-    position: relative;
-}
-
-#detail-content .fact-list li:before {
-    content: "•";
-    color: var(--primary);
-    position: absolute;
-    left: 0;
-    font-size: 1.5rem;
-}
-
-#detail-content .detail-info {
-    background: rgba(10, 10, 42, 0.5);
-    padding: 1.5rem;
-    border-radius: 10px;
-    margin-top: 1.5rem;
-}
-
-/* Glossary Modal */
-.glossary-content {
-    max-width: 900px;
-    max-height: 80vh;
-    overflow-y: auto;
-}
-
-.glossary-search {
-    margin-bottom: 1.5rem;
-}
-
-#glossary-search {
-    width: 100%;
-    padding: 0.8rem 1rem;
-    border-radius: 5px;
-    border: 2px solid var(--primary);
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--text);
-    font-family: 'Exo 2', sans-serif;
-    font-size: 1rem;
-}
-
-#glossary-items {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
-
-.glossary-item {
-    background: rgba(10, 10, 42, 0.5);
-    padding: 1rem;
-    border-radius: 10px;
-}
-
-.glossary-item h4 {
-    color: var(--primary-light);
-    margin-bottom: 0.5rem;
-    border-bottom: 1px solid rgba(110, 0, 255, 0.3);
-    padding-bottom: 0.5rem;
-}
-
 /* Footer */
 footer {
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
@@ -1017,7 +985,7 @@ footer {
 /* Responsive Design */
 @media (max-width: 1200px) {
     h1 {
-        font-size: 3rem;
+        font-size: 2.2rem;
     }
     
     h2 {
@@ -1030,18 +998,12 @@ footer {
 }
 
 @media (max-width: 992px) {
-    header {
-        flex-direction: column;
-        text-align: center;
+    .desktop-nav {
+        display: none;
     }
     
-    .logo {
-        margin-bottom: 1rem;
-        justify-content: center;
-    }
-    
-    nav {
-        margin: 1rem 0 0;
+    .menu-btn {
+        display: block;
     }
     
     .timeline-container::before {
@@ -1078,16 +1040,15 @@ footer {
 
 @media (max-width: 768px) {
     h1 {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
     }
     
     h2 {
         font-size: 2rem;
     }
     
-    nav ul {
-        flex-wrap: wrap;
-        justify-content: center;
+    .logo p {
+        display: none;
     }
     
     .options {
@@ -1104,15 +1065,11 @@ footer {
         width: 95%;
         padding: 1.5rem;
     }
-    
-    #solar-system-3d {
-        height: 400px;
-    }
 }
 
 @media (max-width: 576px) {
     h1 {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
     
     h2 {
@@ -1131,5 +1088,13 @@ footer {
     
     .footer-section {
         flex: 100%;
+    }
+    
+    .search-container {
+        flex-direction: column;
+    }
+    
+    #search-button {
+        width: 100%;
     }
 }

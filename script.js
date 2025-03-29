@@ -1,86 +1,8 @@
-
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize particles.js
-    particlesJS('particles-js', {
-        particles: {
-            number: {
-                value: 100,
-                density: {
-                    enable: true,
-                    value_area: 800
-                }
-            },
-            color: {
-                value: "#ffffff"
-            },
-            shape: {
-                type: "circle",
-                stroke: {
-                    width: 0,
-                    color: "#000000"
-                }
-            },
-            opacity: {
-                value: 0.5,
-                random: true,
-                anim: {
-                    enable: true,
-                    speed: 1,
-                    opacity_min: 0.1,
-                    sync: false
-                }
-            },
-            size: {
-                value: 3,
-                random: true,
-                anim: {
-                    enable: true,
-                    speed: 2,
-                    size_min: 0.1,
-                    sync: false
-                }
-            },
-            line_linked: {
-                enable: false
-            },
-            move: {
-                enable: true,
-                speed: 0.5,
-                direction: "none",
-                random: true,
-                straight: false,
-                out_mode: "out",
-                bounce: false
-            }
-        },
-        interactivity: {
-            detect_on: "canvas",
-            events: {
-                onhover: {
-                    enable: true,
-                    mode: "bubble"
-                },
-                onclick: {
-                    enable: true,
-                    mode: "push"
-                },
-                resize: true
-            },
-            modes: {
-                bubble: {
-                    distance: 100,
-                    size: 4,
-                    duration: 2,
-                    opacity: 0.8,
-                    speed: 3
-                },
-                push: {
-                    particles_nb: 4
-                }
-            }
-        },
-        retina_detect: true
-    });
+    // Mobile menu elements
+    const menuBtn = document.getElementById('menu-btn');
+    const closeMenuBtn = document.getElementById('close-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
     
     // Navigation elements
     const homeSection = document.getElementById('home');
@@ -97,19 +19,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Modal elements
     const modal = document.getElementById('detail-modal');
-    const glossaryModal = document.getElementById('glossary-modal');
     const closeButtons = document.querySelectorAll('.close-button');
     const detailContent = document.getElementById('detail-content');
-    const glossaryLink = document.getElementById('glossary-link');
     
     // Planet elements
     const planets = document.querySelectorAll('.planet');
     const spaceObjects = document.querySelectorAll('.space-object');
-    
-    // View toggle elements
-    const viewButtons = document.querySelectorAll('.view-btn');
-    const solarSystem3D = document.getElementById('solar-system-3d');
-    const planetsList = document.getElementById('planets-list');
     
     // Category filter elements
     const categoryButtons = document.querySelectorAll('.category-btn');
@@ -125,6 +40,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Search elements
     const searchInput = document.getElementById('search-input');
     const searchButton = document.getElementById('search-button');
+    
+    // Mobile menu functions
+    menuBtn.addEventListener('click', function() {
+        mobileMenu.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    });
+    
+    closeMenuBtn.addEventListener('click', function() {
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = 'auto';
+    });
     
     // Navigation functions
     function showSection(section) {
@@ -145,13 +71,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Show the selected section
         section.classList.add('active');
         
+        // Close mobile menu if open
+        mobileMenu.classList.remove('open');
+        document.body.style.overflow = 'auto';
+        
         // Scroll to top
         window.scrollTo(0, 0);
-        
-        // Initialize 3D view if solar system section is shown
-        if (section === solarSystemSection && solarSystem3D.innerHTML === '') {
-            initThreeJS();
-        }
     }
     
     // Event listeners for navigation
@@ -192,7 +117,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function closeModal() {
         modal.style.display = 'none';
-        glossaryModal.style.display = 'none';
         document.body.style.overflow = 'auto'; // Enable scrolling
     }
     
@@ -203,7 +127,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Close modal when clicking outside the modal content
     window.addEventListener('click', function(event) {
-        if (event.target === modal || event.target === glossaryModal) {
+        if (event.target === modal) {
             closeModal();
         }
     });
@@ -212,55 +136,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
             closeModal();
-        }
-    });
-    
-    document.addEventListener("DOMContentLoaded", function () {
-        const viewButtons = document.querySelectorAll(".view-btn");
-        const solarSystem3D = document.getElementById("solar-system-3d");
-        const planetsList = document.getElementById("planets-list");
-        
-        // Ensure the video element exists before using it
-        const solarVideo = document.getElementById("solar-video");
-    
-        viewButtons.forEach((button) => {
-            button.addEventListener("click", function () {
-                viewButtons.forEach((btn) => btn.classList.remove("active"));
-                this.classList.add("active");
-    
-                const view = this.getAttribute("data-view");
-    
-                if (view === "3d") {
-                    solarSystem3D.classList.add("active-view");
-                    planetsList.classList.remove("active-view");
-    
-                    // Play the video when switching to 3D view
-                    if (solarVideo) {
-                        solarVideo.play();
-                    }
-                } else {
-                    solarSystem3D.classList.remove("active-view");
-                    planetsList.classList.add("active-view");
-    
-                    // Pause the video when switching views
-                    if (solarVideo) {
-                        solarVideo.pause();
-                    }
-                }
-            });
-        });
-    });    
-
-    // Open glossary modal
-    glossaryLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        glossaryModal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-        
-        // Generate glossary content if it's empty
-        const glossaryItems = document.getElementById('glossary-items');
-        if (glossaryItems.innerHTML === '') {
-            generateGlossary();
         }
     });
     
@@ -455,120 +330,9 @@ document.addEventListener('DOMContentLoaded', function() {
             composition: 'Interstellar dust, hydrogen, helium, and other ionized gases',
             famous: 'Orion Nebula, Eagle Nebula, Crab Nebula, Helix Nebula, Cat\'s Eye Nebula'
         },
-        'galaxy': {
-            name: 'Galaxies',
-            image: 'https://th.bing.com/th/id/OIP.MHaR4548lqlsuuFAsiCt3QHaEh?rs=1&pid=ImgDetMain',
-            description: 'A galaxy is a gravitationally bound system of stars, stellar remnants, interstellar gas, dust, and dark matter. The word galaxy is derived from the Greek galaxias, literally "milky", a reference to the Milky Way.',
-            facts: [
-                'There are estimated to be more than 100 billion galaxies in the observable universe.',
-                'The Milky Way is a barred spiral galaxy containing an estimated 100-400 billion stars.',
-                'Galaxies are categorized by their shape: spiral, elliptical, and irregular.',
-                'Galaxies are mostly empty space, with stars separated by vast distances.',
-                'Galaxies often collide and merge, a process that takes billions of years.'
-            ],
-            types: 'Spiral, Elliptical, Irregular, Lenticular',
-            size: 'From a few thousand to hundreds of thousands of light-years across',
-            composition: 'Stars, gas, dust, dark matter, and usually a supermassive black hole at the center',
-            famous: 'Milky Way, Andromeda Galaxy, Whirlpool Galaxy, Sombrero Galaxy'
-        },
-        'star': {
-            name: 'Stars',
-            image: 'https://cdn.britannica.com/38/111338-050-D23BE7C8/Stars-NGC-290-Hubble-Space-Telescope.jpg',
-            description: 'A star is an astronomical object consisting of a luminous spheroid of plasma held together by its own gravity. The nearest star to Earth is the Sun, which is the source of most of the energy on Earth.',
-            facts: [
-                'Stars form from clouds of gas and dust in space called nebulae.',
-                'Stars produce energy through nuclear fusion, combining hydrogen atoms to form helium.',
-                'Stars have different colors depending on their temperature, from red (coolest) to blue (hottest).',
-                'The life cycle of a star depends on its mass, with more massive stars having shorter lives.',
-                'When stars die, they can become white dwarfs, neutron stars, or black holes.'
-            ],
-            types: 'Main Sequence, Red Giants, White Dwarfs, Neutron Stars, Supergiants',
-            lifespan: 'From a few million years (massive stars) to trillions of years (red dwarfs)',
-            composition: 'Primarily hydrogen and helium, with trace amounts of heavier elements',
-            famous: 'Sun, Sirius, Betelgeuse, Proxima Centauri, Polaris (North Star)'
-        },
-        'supernova': {
-            name: 'Supernovae',
-            image: 'https://www.worldatlas.com/r/w1200-q80/upload/67/30/3d/shutterstock-1020241981.jpg',
-            description: 'A supernova is the explosion of a star that has reached the end of its life. It is the largest explosion that takes place in space and can be seen from Earth with the naked eye if it occurs within our galaxy.',
-            facts: [
-                'A supernova can briefly outshine an entire galaxy.',
-                'Supernovae are responsible for creating and dispersing many of the heavy elements in the universe.',
-                'There are two main types of supernovae: core-collapse (massive stars) and Type Ia (white dwarf stars).',
-                'The last supernova observed in our galaxy was in 1604, known as Kepler\'s Supernova.',
-                'Supernovae remnants can persist for thousands of years.'
-            ],
-            types: 'Type Ia, Type Ib/c, Type II',
-            energy: 'Releases as much energy in a few seconds as our Sun will in its entire lifetime',
-            frequency: 'About one supernova per galaxy every 50 years',
-            famous: 'SN 1054 (created the Crab Nebula), SN 1987A, Kepler\'s Supernova (SN 1604)'
-        },
-        'pulsar': {
-            name: 'Pulsars',
-            image: 'https://cdn.mos.cms.futurecdn.net/7kCUkCxg6mAD2CXZ9kdKRa.jpg',
-            description: 'A pulsar is a highly magnetized rotating neutron star that emits beams of electromagnetic radiation out of its magnetic poles. This radiation can be observed only when a beam of emission is pointing toward Earth.',
-            facts: [
-                'Pulsars rotate extremely rapidly, with periods from milliseconds to seconds.',
-                'Pulsars were first discovered in 1967 by Jocelyn Bell Burnell.',
-                'The fastest known pulsar rotates 716 times per second.',
-                'Pulsars are extremely dense, with a mass greater than the Sun compressed into an object about 20 km in diameter.',
-                'Pulsars slow down over time as they lose rotational energy.'
-            ],
-            types: 'Rotation-powered, Accretion-powered, Magnetars',
-            detection: 'Detected primarily by radio telescopes as regular pulses of radiation',
-            origin: 'Form from the collapsed cores of massive stars after supernova explosions',
-            famous: 'Crab Pulsar, Vela Pulsar, PSR B1919+21 (first discovered)'
-        },
-        'quasar': {
-            name: 'Quasars',
-            image: 'https://www.worldatlas.com/r/w1200/upload/05/b3/f5/shutterstock-286396826.jpg',
-            description: 'Quasars (quasi-stellar objects) are extremely luminous active galactic nuclei, powered by supermassive black holes. They are among the brightest objects in the universe.',
-            facts: [
-                'Quasars can emit energy equivalent to hundreds of galaxies combined.',
-                'Quasars are typically found in the centers of young galaxies billions of light-years away.',
-                'The first quasar was discovered in 1963 by astronomer Maarten Schmidt.',
-                'Quasars appear star-like because their extreme brightness outshines their host galaxies.',
-                'Quasars were more common in the early universe than they are today.'
-            ],
-            power: 'Powered by supermassive black holes accreting matter',
-            distance: 'Most are billions of light-years away, showing us the early universe',
-            lifespan: 'Active for about 10-100 million years',
-            famous: '3C 273 (first discovered), APM 08279+5255 (one of the most luminous)'
-        },
-        'dark-matter': {
-            name: 'Dark Matter',
-            image: 'https://media.sciencephoto.com/image/r9800110/800wm/R9800110-Dark_matter_map.jpg',
-            description: 'Dark matter is a hypothetical form of matter that is thought to account for approximately 85% of the matter in the universe. It does not interact with the electromagnetic force and thus cannot be directly detected.',
-            facts: [
-                'Dark matter does not emit, absorb, or reflect light, making it invisible.',
-                'Its existence is inferred from gravitational effects on visible matter and the cosmic microwave background.',
-                'The nature of dark matter remains one of the biggest mysteries in modern physics.',
-                'Leading candidates for dark matter include weakly interacting massive particles (WIMPs) and axions.',
-                'Dark matter appears to form a network of filaments throughout the universe, with galaxies forming at the intersections.'
-            ],
-            detection: 'Inferred from gravitational effects on visible matter',
-            composition: 'Unknown, but theorized to be composed of undiscovered subatomic particles',
-            distribution: 'Forms a cosmic web structure throughout the universe',
-            research: 'Studied through gravitational lensing, galaxy rotation curves, and cosmic microwave background'
-        },
-        'exoplanet': {
-            name: 'Exoplanets',
-            image: 'https://th.bing.com/th/id/OIP.AKv5q5_U-5GvJBfL5GYTmAHaFV?rs=1&pid=ImgDetMain',
-            description: 'Exoplanets are planets that orbit stars outside our solar system. Since the first confirmed detection in 1992, thousands of exoplanets have been discovered.',
-            facts: [
-                'Over 5,000 exoplanets have been confirmed as of 2023, with thousands more candidates awaiting confirmation.',
-                'Exoplanets come in a wide variety of sizes and compositions, from gas giants to rocky worlds.',
-                'Some exoplanets orbit in the "habitable zone" of their stars, where liquid water could potentially exist on their surfaces.',
-                'The closest known exoplanet is Proxima Centauri b, orbiting the nearest star to our Sun.',
-                'Some exoplanets have extreme conditions, such as HD 189733b where it rains molten glass sideways in hypersonic winds.'
-            ],
-            types: 'Gas Giants, Super-Earths, Mini-Neptunes, Terrestrial, Hot Jupiters',
-            detection: 'Discovered using transit method, radial velocity method, direct imaging, and gravitational microlensing',
-            habitable: 'Some exist in their star\'s habitable zone, making them potential candidates for life',
-            famous: 'TRAPPIST-1 system, Proxima Centauri b, Kepler-452b (Earth\'s "cousin")'
-        }
+        // Additional space objects data would continue here...
     };
-    
+
     // Random space facts
     const spaceFacts = [
         "There are more stars in the universe than grains of sand on all the beaches on Earth.",
@@ -580,17 +344,7 @@ document.addEventListener('DOMContentLoaded', function() {
         "The Great Red Spot on Jupiter has been swirling for at least 400 years.",
         "The Sun makes up 99.86% of the mass in our solar system.",
         "One million Earths could fit inside the Sun.",
-        "Light from the Sun takes about 8 minutes to reach Earth.",
-        "The Milky Way galaxy is moving through space at a rate of 2.1 million kilometers per hour.",
-        "There is a water reservoir in space that contains 140 trillion times the amount of water in Earth's oceans.",
-        "The Hubble Space Telescope has taken over 1.5 million observations since its launch in 1990.",
-        "The largest asteroid, Ceres, is about 940 kilometers in diameter.",
-        "The International Space Station travels at a speed of about 28,000 kilometers per hour.",
-        "A neutron star can spin at a rate of 600 rotations per second.",
-        "The Andromeda Galaxy is on a collision course with the Milky Way, expected to occur in about 4.5 billion years.",
-        "There are more trees on Earth than stars in the Milky Way galaxy.",
-        "The coldest place in the universe is the Boomerang Nebula, at -272°C, just 1 degree above absolute zero.",
-        "The largest known structure in the universe is the Hercules-Corona Borealis Great Wall, spanning 10 billion light-years."
+        "Light from the Sun takes about 8 minutes to reach Earth."
     ];
     
     // Cosmic scale descriptions
@@ -600,26 +354,6 @@ document.addEventListener('DOMContentLoaded', function() {
         "Nebulae are vast clouds of gas and dust in space, often spanning hundreds of light-years. They are the birthplaces of stars and planetary systems.",
         "Galaxies are massive collections of stars, gas, dust, and dark matter. Our Milky Way contains hundreds of billions of stars and is just one of trillions of galaxies in the observable universe.",
         "The observable universe extends about 93 billion light-years in diameter and contains all matter and energy we can theoretically observe. Beyond this cosmic horizon lies the unknown."
-    ];
-    
-    // Glossary terms
-    const glossaryTerms = [
-        { term: "Asteroid", definition: "A small rocky body orbiting the Sun, typically in the asteroid belt between Mars and Jupiter." },
-        { term: "Black Hole", definition: "A region of spacetime where gravity is so strong that nothing, not even light, can escape from it." },
-        { term: "Comet", definition: "A small, icy object that, when close to the Sun, heats up and releases gas, producing a visible coma and sometimes a tail." },
-        { term: "Dark Energy", definition: "A hypothetical form of energy that permeates all of space and tends to accelerate the expansion of the universe." },
-        { term: "Dark Matter", definition: "A form of matter thought to account for approximately 85% of the matter in the universe and about 27% of its total mass-energy." },
-        { term: "Exoplanet", definition: "A planet that orbits a star outside our solar system." },
-        { term: "Galaxy", definition: "A huge collection of gas, dust, and billions of stars and their solar systems, held together by gravity." },
-        { term: "Gravitational Lensing", definition: "The bending of light by massive objects in space, as predicted by Einstein's theory of general relativity." },
-        { term: "Light-Year", definition: "The distance that light travels in one year, approximately 9.46 trillion kilometers." },
-        { term: "Nebula", definition: "A cloud of gas and dust in outer space, visible in the night sky either as a luminous patch or as a dark silhouette against other luminous matter." },
-        { term: "Neutron Star", definition: "The collapsed core of a massive star that has undergone a supernova explosion." },
-        { term: "Pulsar", definition: "A rotating neutron star that emits regular pulses of radio waves and other electromagnetic radiation." },
-        { term: "Quasar", definition: "An extremely luminous active galactic nucleus, powered by a supermassive black hole." },
-        { term: "Red Giant", definition: "A luminous giant star of low or intermediate mass that has exhausted its hydrogen fuel." },
-        { term: "Supernova", definition: "The explosion of a star, causing it to suddenly increase greatly in brightness." },
-        { term: "White Dwarf", definition: "A small, very dense star that is typically the size of a planet. It is formed when a low-mass star has exhausted its nuclear fuel." }
     ];
     
     // Function to display planet details
@@ -709,31 +443,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // View toggle functionality
-    viewButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const view = this.getAttribute('data-view');
-            
-            // Update active button
-            viewButtons.forEach(btn => btn.classList.remove('active'));
-            this.classList.add('active');
-            
-            // Show the selected view
-            if (view === '3d') {
-                solarSystem3D.classList.add('active-view');
-                planetsList.classList.remove('active-view');
-                
-                // Initialize Three.js if not already done
-                if (solarSystem3D.innerHTML === '') {
-                    initThreeJS();
-                }
-            } else {
-                solarSystem3D.classList.remove('active-view');
-                planetsList.classList.add('active-view');
-            }
-        });
-    });
-    
     // Category filter functionality
     categoryButtons.forEach(button => {
         button.addEventListener('click', function() {
@@ -809,196 +518,4 @@ document.addEventListener('DOMContentLoaded', function() {
         // If no match found
         alert(`No results found for "${searchInput.value}"`);
     }
-    
-    // Generate glossary
-    function generateGlossary() {
-        const glossaryItems = document.getElementById('glossary-items');
-        glossaryItems.innerHTML = '';
-        
-        glossaryTerms.sort((a, b) => a.term.localeCompare(b.term)).forEach(item => {
-            const glossaryItem = document.createElement('div');
-            glossaryItem.className = 'glossary-item';
-            glossaryItem.innerHTML = `
-                <h4>${item.term}</h4>
-                <p>${item.definition}</p>
-            `;
-            glossaryItems.appendChild(glossaryItem);
-        });
-    }
-    
-    // Glossary search
-    const glossarySearch = document.getElementById('glossary-search');
-    glossarySearch.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase().trim();
-        const glossaryItems = document.querySelectorAll('.glossary-item');
-        
-        glossaryItems.forEach(item => {
-            const term = item.querySelector('h4').textContent.toLowerCase();
-            const definition = item.querySelector('p').textContent.toLowerCase();
-            
-            if (term.includes(searchTerm) || definition.includes(searchTerm) || searchTerm === '') {
-                item.style.display = 'block';
-            } else {
-                item.style.display = 'none';
-            }
-        });
-    });
-    
-    // Three.js implementation
-    function initThreeJS() {
-        // Create scene
-        const scene = new THREE.Scene();
-        
-        // Create camera
-        const camera = new THREE.PerspectiveCamera(75, solarSystem3D.clientWidth / solarSystem3D.clientHeight, 0.1, 1000);
-        camera.position.z = 50;
-        
-        // Create renderer
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setSize(solarSystem3D.clientWidth, solarSystem3D.clientHeight);
-        renderer.setClearColor(0x000000, 0);
-        solarSystem3D.appendChild(renderer.domElement);
-        
-        // Add orbit controls
-        const controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
-        
-        // Add ambient light
-        const ambientLight = new THREE.AmbientLight(0x404040);
-        scene.add(ambientLight);
-        
-        // Add point light (sun)
-        const pointLight = new THREE.PointLight(0xffffff, 2, 1000);
-        scene.add(pointLight);
-        
-        // Create sun
-        const sunGeometry = new THREE.SphereGeometry(10, 32, 32);
-        const sunMaterial = new THREE.MeshBasicMaterial({ 
-            color: 0xffcc00,
-            emissive: 0xffcc00,
-            emissiveIntensity: 1
-        });
-        const sun = new THREE.Mesh(sunGeometry, sunMaterial);
-        scene.add(sun);
-        
-        // Planet data for Three.js
-        const planetInfo = [
-            { name: 'Mercury', radius: 0.8, distance: 20, color: 0xa5a5a5, speed: 0.04 },
-            { name: 'Venus', radius: 1.2, distance: 25, color: 0xe8cda7, speed: 0.015 },
-            { name: 'Earth', radius: 1.3, distance: 30, color: 0x4ca7e8, speed: 0.01 },
-            { name: 'Mars', radius: 1.0, distance: 35, color: 0xe27b58, speed: 0.008 },
-            { name: 'Jupiter', radius: 3.5, distance: 45, color: 0xe0ae6f, speed: 0.002 },
-            { name: 'Saturn', radius: 3.0, distance: 55, color: 0xe8d080, speed: 0.0009 },
-            { name: 'Uranus', radius: 2.0, distance: 65, color: 0xa5d2e0, speed: 0.0004 },
-            { name: 'Neptune', radius: 1.9, distance: 75, color: 0x5580e0, speed: 0.0001 }
-        ];
-        
-        // Create planets
-        const planets3D = [];
-        const orbits = [];
-        
-        planetInfo.forEach(planet => {
-            // Create orbit
-            const orbitGeometry = new THREE.RingGeometry(planet.distance - 0.1, planet.distance + 0.1, 64);
-            const orbitMaterial = new THREE.MeshBasicMaterial({ 
-                color: 0xffffff, 
-                side: THREE.DoubleSide,
-                transparent: true,
-                opacity: 0.1
-            });
-            const orbit = new THREE.Mesh(orbitGeometry, orbitMaterial);
-            orbit.rotation.x = Math.PI / 2;
-            scene.add(orbit);
-            orbits.push(orbit);
-            
-            // Create planet
-            const planetGeometry = new THREE.SphereGeometry(planet.radius, 32, 32);
-            const planetMaterial = new THREE.MeshLambertMaterial({ color: planet.color });
-            const planet3D = new THREE.Mesh(planetGeometry, planetMaterial);
-            
-            // Position planet
-            planet3D.position.x = planet.distance;
-            
-            // Add planet to scene and array
-            scene.add(planet3D);
-            planets3D.push({
-                mesh: planet3D,
-                speed: planet.speed,
-                distance: planet.distance,
-                angle: Math.random() * Math.PI * 2
-            });
-            
-            // Add planet label
-            const planetDiv = document.createElement('div');
-            planetDiv.className = 'planet-label';
-            planetDiv.textContent = planet.name;
-            planetDiv.style.position = 'absolute';
-            planetDiv.style.color = 'white';
-            planetDiv.style.fontSize = '12px';
-            planetDiv.style.fontFamily = 'Orbitron, sans-serif';
-            planetDiv.style.textShadow = '0 0 5px rgba(0,0,0,0.5)';
-            planetDiv.style.pointerEvents = 'none';
-            solarSystem3D.appendChild(planetDiv);
-            
-            // Store label with planet
-            planets3D[planets3D.length - 1].label = planetDiv;
-        });
-        
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            camera.aspect = solarSystem3D.clientWidth / solarSystem3D.clientHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(solarSystem3D.clientWidth, solarSystem3D.clientHeight);
-        });
-        
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-            
-            // Rotate sun
-            sun.rotation.y += 0.001;
-            
-            // Update planets
-            planets3D.forEach(planet => {
-                // Update angle
-                planet.angle += planet.speed;
-                
-                // Update position
-                planet.mesh.position.x = Math.cos(planet.angle) * planet.distance;
-                planet.mesh.position.z = Math.sin(planet.angle) * planet.distance;
-                
-                // Rotate planet
-                planet.mesh.rotation.y += planet.speed * 10;
-                
-                // Update label position
-                const vector = new THREE.Vector3();
-                vector.setFromMatrixPosition(planet.mesh.matrixWorld);
-                vector.project(camera);
-                
-                const x = (vector.x * 0.5 + 0.5) * solarSystem3D.clientWidth;
-                const y = (-(vector.y * 0.5) + 0.5) * solarSystem3D.clientHeight;
-                
-                planet.label.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
-                
-                // Hide label if planet is behind the camera
-                if (vector.z > 1) {
-                    planet.label.style.display = 'none';
-                } else {
-                    planet.label.style.display = 'block';
-                    // Scale opacity based on distance from camera
-                    const opacity = 1 - (vector.z + 1) / 2;
-                    planet.label.style.opacity = opacity > 0 ? opacity : 0;
-                }
-            });
-            
-            controls.update();
-            renderer.render(scene, camera);
-        }
-        
-        animate();
-    }
-    
-    // Initialize the page
-    showSection(homeSection);
 });
