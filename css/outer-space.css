@@ -1,0 +1,209 @@
+/* Outer Space Page Styles */
+
+.outer-space-intro {
+    max-width: 1000px;
+    margin: 0 auto 3rem;
+    text-align: center;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.categories-filter {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.category-btn {
+    padding: 0.6rem 1.2rem;
+    background: rgba(26, 26, 74, 0.7);
+    color: var(--text);
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.category-btn.active, .category-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.space-objects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.space-object {
+    background: rgba(26, 26, 74, 0.7);
+    border-radius: 15px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    border: 1px solid rgba(110, 0, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.space-object::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(110, 0, 255, 0.1), rgba(0, 180, 216, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: -1;
+}
+
+.space-object:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(110, 0, 255, 0.4);
+}
+
+.space-object:hover::before {
+    opacity: 1;
+}
+
+.object-image {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 0 auto 1rem;
+    border: 3px solid rgba(110, 0, 255, 0.3);
+    position: relative;
+}
+
+.object-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.space-object:hover .object-image img {
+    transform: scale(1.1);
+}
+
+/* Cosmic Scale */
+.cosmic-scale {
+    margin: 3rem auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+.scale-slider-container {
+    margin: 2rem 0;
+    position: relative;
+}
+
+.slider {
+    width: 100%;
+    height: 10px;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    -webkit-appearance: none;
+    margin-bottom: 1rem;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--primary);
+    cursor: pointer;
+}
+
+.scale-labels {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
+    color: rgba(224, 224, 255, 0.7);
+}
+
+.scale-description {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(26, 26, 74, 0.7);
+    border-radius: 15px;
+    border: 1px solid rgba(110, 0, 255, 0.2);
+}
+
+/* Space Object Detail Modal */
+#space-object-detail-content {
+    color: var(--text);
+}
+
+#space-object-detail-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#space-object-detail-content .detail-image {
+    width: 100%;
+    max-height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+#space-object-detail-content .detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#space-object-detail-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+#space-object-detail-content .fact-list {
+    margin: 1.5rem 0;
+}
+
+#space-object-detail-content .fact-list li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+#space-object-detail-content .fact-list li:before {
+    content: "•";
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+    font-size: 1.5rem;
+}
+
+#space-object-detail-content .detail-info {
+    background: rgba(10, 10, 42, 0.5);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .categories-filter {
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+    }
+    
+    .space-objects-container {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+}

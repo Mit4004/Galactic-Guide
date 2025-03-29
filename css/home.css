@@ -1,0 +1,325 @@
+/* Home Page Styles */
+
+/* Search Container */
+.search-container {
+    margin: 2rem auto;
+    max-width: 600px;
+    display: flex;
+    gap: 0.5rem;
+}
+
+#search-input {
+    flex: 1;
+    padding: 0.8rem 1rem;
+    border-radius: 30px;
+    border: 2px solid var(--primary);
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1rem;
+}
+
+#search-button {
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+}
+
+#search-button:hover {
+    background: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(110, 0, 255, 0.3);
+}
+
+/* NASA APOD */
+.nasa-apod {
+    margin: 2rem auto;
+    max-width: 900px;
+}
+
+.apod-container {
+    background: rgba(26, 26, 74, 0.7);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid rgba(110, 0, 255, 0.2);
+    overflow: hidden;
+}
+
+.apod-image {
+    width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.apod-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.apod-date {
+    font-size: 0.9rem;
+    color: var(--secondary);
+    margin-bottom: 1rem;
+}
+
+.apod-explanation {
+    line-height: 1.6;
+}
+
+/* Home Options */
+.options {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+}
+
+.option {
+    background: rgba(26, 26, 74, 0.7);
+    border-radius: 15px;
+    padding: 1.5rem;
+    width: 300px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid rgba(110, 0, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.option::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(110, 0, 255, 0.1), rgba(0, 180, 216, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: -1;
+}
+
+.option:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(110, 0, 255, 0.4);
+}
+
+.option:hover::before {
+    opacity: 1;
+}
+
+.option-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.option-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.option:hover .option-image img {
+    transform: scale(1.1);
+}
+
+.option h3 {
+    margin-bottom: 0.5rem;
+    font-size: 1.5rem;
+}
+
+/* Did You Know Section */
+.did-you-know {
+    margin: 4rem auto;
+    max-width: 800px;
+    background: rgba(26, 26, 74, 0.7);
+    border-radius: 15px;
+    padding: 2rem;
+    border: 1px solid rgba(110, 0, 255, 0.2);
+    position: relative;
+}
+
+.did-you-know::before {
+    content: '?';
+    position: absolute;
+    top: -30px;
+    right: 30px;
+    font-size: 5rem;
+    color: var(--primary);
+    opacity: 0.5;
+    font-family: 'Orbitron', sans-serif;
+}
+
+#random-fact {
+    font-size: 1.1rem;
+    margin: 1.5rem 0;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#new-fact-btn {
+    padding: 0.6rem 1.2rem;
+    background: var(--secondary);
+    color: white;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+#new-fact-btn:hover {
+    background: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 180, 216, 0.3);
+}
+
+/* News Preview */
+.news-preview {
+    margin: 4rem auto;
+    max-width: 1000px;
+}
+
+.news-preview-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.news-item {
+    background: rgba(26, 26, 74, 0.7);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid rgba(110, 0, 255, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.news-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(110, 0, 255, 0.3);
+}
+
+.news-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.news-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.news-item:hover .news-image img {
+    transform: scale(1.05);
+}
+
+.news-date {
+    font-size: 0.9rem;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}
+
+.news-title {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.news-summary {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.view-all-btn {
+    display: block;
+    width: fit-content;
+    margin: 2rem auto 0;
+    padding: 0.8rem 2rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 30px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.view-all-btn:hover {
+    background: var(--primary-light);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(110, 0, 255, 0.3);
+    color: white;
+}
+
+/* Upcoming Events */
+.upcoming-events, .spacex-launches {
+    margin: 4rem auto;
+    max-width: 1000px;
+}
+
+.events-container, .launches-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.event, .launch {
+    background: rgba(26, 26, 74, 0.7);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid rgba(110, 0, 255, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.event:hover, .launch:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(110, 0, 255, 0.3);
+}
+
+.event-date, .launch-date {
+    display: inline-block;
+    padding: 0.3rem 0.8rem;
+    background: var(--primary);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.launch-image {
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.launch-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.launch-mission {
+    font-weight: bold;
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+}

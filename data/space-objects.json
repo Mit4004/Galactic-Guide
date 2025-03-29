@@ -1,0 +1,168 @@
+{
+    "spaceObjects": [
+      {
+        "id": "black-hole",
+        "name": "Black Holes",
+        "category": "exotic",
+        "image": "https://solarsystem.nasa.gov/internal_resources/3622",
+        "description": "A black hole is a region of spacetime where gravity is so strong that nothing—no particles or even electromagnetic radiation such as light—can escape from it.",
+        "facts": [
+          "Black holes form when massive stars die and collapse under their own gravity.",
+          "The boundary of a black hole is called the event horizon, beyond which nothing can escape.",
+          "Time slows down near a black hole due to gravitational time dilation.",
+          "Supermassive black holes exist at the center of most galaxies, including our Milky Way.",
+          "Black holes can grow by absorbing mass or merging with other black holes."
+        ],
+        "types": "Stellar, Intermediate, Supermassive, Primordial (theoretical)",
+        "discovery": "First predicted by Einstein's theory of general relativity in 1916",
+        "size": "From a few kilometers (stellar) to billions of kilometers (supermassive)",
+        "detection": "Detected indirectly through their effects on surrounding matter and space",
+        "famous": "Sagittarius A* (center of Milky Way), M87* (first photographed black hole)"
+      },
+      {
+        "id": "nebula",
+        "name": "Nebulae",
+        "category": "stellar",
+        "image": "https://th.bing.com/th/id/OIP.jGWkE0FfUzPt1GAkuONeMQHaFM?rs=1&pid=ImgDetMain",
+        "description": "A nebula is an interstellar cloud of dust, hydrogen, helium and other ionized gases. Originally, the term was used to describe any diffuse astronomical object, including galaxies beyond the Milky Way.",
+        "facts": [
+          "Nebulae are often star-forming regions, such as in the 'Pillars of Creation' in the Eagle Nebula.",
+          "Planetary nebulae form when a dying star expels its outer layers of gas.",
+          "Supernova remnants are nebulae created by the explosion of a star.",
+          "The Orion Nebula is one of the brightest nebulae and can be seen with the naked eye.",
+          "Some nebulae are illuminated by stars, while others block light and appear as dark patches."
+        ],
+        "types": "Emission, Reflection, Dark, Planetary, Supernova Remnants",
+        "size": "Can span hundreds of light-years across",
+        "composition": "Interstellar dust, hydrogen, helium, and other ionized gases",
+        "famous": "Orion Nebula, Eagle Nebula, Crab Nebula, Helix Nebula, Cat's Eye Nebula"
+      },
+      {
+        "id": "galaxy",
+        "name": "Galaxies",
+        "category": "galactic",
+        "image": "https://wallpaperaccess.com/full/3257596.jpg",
+        "description": "A galaxy is a gravitationally bound system of stars, stellar remnants, interstellar gas, dust, and dark matter. The Milky Way is the galaxy that contains our Solar System.",
+        "facts": [
+          "There are estimated to be over 100 billion galaxies in the observable universe.",
+          "Galaxies come in various shapes and sizes, including spiral, elliptical, and irregular.",
+          "The Milky Way is a barred spiral galaxy containing 100-400 billion stars.",
+          "Galaxies are often found in groups or clusters, bound together by gravity.",
+          "The Andromeda Galaxy is on a collision course with the Milky Way, expected to merge in about 4.5 billion years."
+        ],
+        "types": "Spiral, Elliptical, Lenticular, Irregular",
+        "size": "From a few thousand to hundreds of thousands of light-years across",
+        "composition": "Stars, gas, dust, dark matter",
+        "famous": "Milky Way, Andromeda Galaxy, Whirlpool Galaxy, Sombrero Galaxy"
+      },
+      {
+        "id": "star",
+        "name": "Stars",
+        "category": "stellar",
+        "image": "https://wallpapercave.com/wp/wp2088440.jpg",
+        "description": "A star is an astronomical object consisting of a luminous spheroid of plasma held together by its own gravity. The nearest star to Earth is the Sun.",
+        "facts": [
+          "Stars are born in nebulae from collapsing clouds of gas and dust.",
+          "Stars generate energy through nuclear fusion, primarily converting hydrogen to helium.",
+          "The color of a star depends on its surface temperature, with blue stars being the hottest and red stars the coolest.",
+          "Stars have different sizes, from neutron stars (about 20 km in diameter) to supergiants (over 1,500 times the Sun's diameter).",
+          "When massive stars die, they can explode as supernovae, leaving behind neutron stars or black holes."
+        ],
+        "types": "Main Sequence, Giants, Supergiants, White Dwarfs, Neutron Stars",
+        "lifecycle": "Nebula → Protostar → Main Sequence → Red Giant/Supergiant → White Dwarf/Supernova → Neutron Star/Black Hole",
+        "composition": "Primarily hydrogen and helium, with trace amounts of heavier elements",
+        "famous": "Sun, Sirius, Betelgeuse, Proxima Centauri, UY Scuti (largest known star)"
+      },
+      {
+        "id": "supernova",
+        "name": "Supernovae",
+        "category": "stellar",
+        "image": "https://sm.mashable.com/mashable_in/photo/default/ss_nd72.jpg",
+        "description": "A supernova is the explosion of a star that briefly outshines an entire galaxy, radiating as much energy as the Sun would emit over its entire life span.",
+        "facts": [
+          "Supernovae are the largest explosions that take place in space.",
+          "They can briefly outshine entire galaxies and radiate more energy than our sun will in its entire lifetime.",
+          "Supernovae are the primary source of heavy elements in the universe.",
+          "There are two main types: Type Ia (white dwarf explosion) and Type II (massive star collapse).",
+          "The last supernova observed in our Milky Way was in 1604, known as Kepler's Supernova."
+        ],
+        "types": "Type Ia (thermonuclear), Type II (core-collapse)",
+        "frequency": "1-2 per century in a typical galaxy",
+        "importance": "Create and disperse heavy elements throughout the universe",
+        "famous": "SN 1054 (created the Crab Nebula), SN 1987A (closest observed in modern times)"
+      },
+      {
+        "id": "pulsar",
+        "name": "Pulsars",
+        "category": "exotic",
+        "image": "https://littleastronomy.com/wp-content/uploads/2023/01/pulsar.jpg",
+        "description": "A pulsar is a highly magnetized rotating neutron star that emits beams of electromagnetic radiation out of its magnetic poles.",
+        "facts": [
+          "Pulsars rotate extremely rapidly, with periods from milliseconds to seconds.",
+          "They emit regular pulses of radiation that can be detected as radio waves.",
+          "Pulsars are formed from the collapsed cores of massive stars after supernova explosions.",
+          "The fastest known pulsar rotates about 716 times per second.",
+          "Pulsars are used as cosmic clocks due to their extremely precise rotation periods."
+        ],
+        "discovery": "First discovered by Jocelyn Bell Burnell in 1967",
+        "rotation": "From milliseconds to seconds per rotation",
+        "composition": "Incredibly dense neutron-rich matter",
+        "size": "Typically about 20 kilometers in diameter",
+        "importance": "Used for testing theories of gravity and detecting gravitational waves"
+      },
+      {
+        "id": "quasar",
+        "name": "Quasars",
+        "category": "exotic",
+        "image": "https://th.bing.com/th/id/OIP.eY8SIIEUghoclk1J4W8VVQHaFj?rs=1&pid=ImgDetMain",
+        "description": "Quasars are extremely luminous active galactic nuclei, powered by supermassive black holes with masses ranging from millions to billions of times that of the Sun.",
+        "facts": [
+          "Quasars are among the brightest objects in the universe.",
+          "They are powered by supermassive black holes at the centers of galaxies.",
+          "Quasars can emit up to a thousand times the energy output of the entire Milky Way.",
+          "Most quasars are billions of light-years away, showing us the universe as it was in the distant past.",
+          "The term 'quasar' comes from 'quasi-stellar radio source' as they appeared star-like but emitted radio waves."
+        ],
+        "discovery": "First identified in the 1950s as radio sources",
+        "distance": "Most are billions of light-years from Earth",
+        "power": "Generated by matter falling into supermassive black holes",
+        "importance": "Help astronomers study the early universe and galaxy evolution"
+      },
+      {
+        "id": "dark-matter",
+        "name": "Dark Matter",
+        "category": "exotic",
+        "image": "https://th.bing.com/th/id/OIP.3N39t-p-dVEmJZyvZJvMowHaFV?rs=1&pid=ImgDetMain",
+        "description": "Dark matter is a hypothetical form of matter thought to account for approximately 85% of the matter in the universe. It has not been directly observed, but its existence is implied by various astrophysical observations.",
+        "facts": [
+          "Dark matter does not interact with the electromagnetic force, making it invisible.",
+          "Its existence is inferred from gravitational effects on visible matter and background radiation.",
+          "Dark matter is estimated to constitute about 27% of the universe's total mass-energy.",
+          "Leading candidates for dark matter include weakly interacting massive particles (WIMPs) and axions.",
+          "The distribution of dark matter has played a crucial role in the formation of galaxies."
+        ],
+        "detection": "Inferred through gravitational effects on visible matter",
+        "composition": "Unknown, but theorized to be exotic non-baryonic particles",
+        "distribution": "Forms halos around galaxies and extends beyond visible matter",
+        "importance": "Essential for understanding galaxy formation and cosmic structure"
+      },
+      {
+        "id": "exoplanet",
+        "name": "Exoplanets",
+        "category": "stellar",
+        "image": "https://th.bing.com/th/id/OIP.2MmxCGwtHcj4QKDXIs8VNQHaEO?rs=1&pid=ImgDetMain",
+        "description": "Exoplanets are planets outside our solar system that orbit other stars. They come in a wide variety of sizes and compositions, from gas giants to rocky worlds.",
+        "facts": [
+          "Over 5,000 exoplanets have been confirmed as of 2023, with thousands more candidates awaiting confirmation.",
+          "The first exoplanet around a Sun-like star was discovered in 1995.",
+          "Some exoplanets orbit in the 'habitable zone' where liquid water could exist on their surface.",
+          "Exoplanets are detected through various methods, including transit photometry and radial velocity measurements.",
+          "The nearest known exoplanet is Proxima Centauri b, about 4.2 light-years from Earth."
+        ],
+        "types": "Gas Giants, Ice Giants, Super-Earths, Terrestrial, Hot Jupiters",
+        "detection": "Transit method, radial velocity, direct imaging, gravitational microlensing",
+        "habitable": "Some exist in their star's 'habitable zone' where liquid water could exist",
+        "famous": "Proxima Centauri b, TRAPPIST-1 system, HD 209458 b (Osiris)"
+      }
+    ]
+  }

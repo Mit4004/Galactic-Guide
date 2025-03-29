@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galactic Guide | Explore the Universe</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Mono&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -28,10 +34,11 @@
             </div>
             <nav class="mobile-nav">
                 <ul>
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#solar-system" class="nav-link">Solar System</a></li>
-                    <li><a href="#outer-space" class="nav-link">Outer Space</a></li>
-                    <li><a href="#space-exploration" class="nav-link">Exploration</a></li>
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="pages/solar-system.html" class="nav-link">Solar System</a></li>
+                    <li><a href="pages/outer-space.html" class="nav-link">Outer Space</a></li>
+                    <li><a href="pages/space-exploration.html" class="nav-link">Exploration</a></li>
+                    <li><a href="pages/news.html" class="nav-link">Space News</a></li>
                 </ul>
             </nav>
         </div>
@@ -57,10 +64,11 @@
             </div>
             <nav class="desktop-nav">
                 <ul>
-                    <li><a href="#home" class="nav-link active">Home</a></li>
-                    <li><a href="#solar-system" class="nav-link">Solar System</a></li>
-                    <li><a href="#outer-space" class="nav-link">Outer Space</a></li>
-                    <li><a href="#space-exploration" class="nav-link">Exploration</a></li>
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="pages/solar-system.html" class="nav-link">Solar System</a></li>
+                    <li><a href="pages/outer-space.html" class="nav-link">Outer Space</a></li>
+                    <li><a href="pages/space-exploration.html" class="nav-link">Exploration</a></li>
+                    <li><a href="pages/news.html" class="nav-link">Space News</a></li>
                 </ul>
             </nav>
         </div>
@@ -75,26 +83,35 @@
                     <input type="text" id="search-input" placeholder="Search planets, stars, galaxies...">
                     <button id="search-button">Search</button>
                 </div>
+                
+                <!-- NASA Astronomy Picture of the Day -->
+                <div class="nasa-apod">
+                    <h3>NASA Astronomy Picture of the Day</h3>
+                    <div id="apod-container" class="apod-container">
+                        <div class="loading-spinner"></div>
+                    </div>
+                </div>
+                
                 <div class="options">
-                    <div class="option" id="solar-system-option">
+                    <div class="option" data-page="solar-system">
                         <div class="option-image">
                             <img src="https://static.vecteezy.com/system/resources/previews/001/953/347/original/planets-of-the-solar-system-infographic-free-vector.jpg" alt="Solar System">
                         </div>
                         <h3>Solar System</h3>
                         <p>Explore the planets of our solar system</p>
                     </div>
-                    <div class="option" id="outer-space-option">
+                    <div class="option" data-page="outer-space">
                         <div class="option-image">
                             <img src="https://wallup.net/wp-content/uploads/2018/10/04/670006-space-outer-universe-stars-photography-detail-astronomy-nasa-hubble.jpg" alt="Outer Space">
                         </div>
                         <h3>Outer Space</h3>
                         <p>Discover nebulae, black holes, and more cosmic wonders</p>
                     </div>
-                    <div class="option" id="space-exploration-option">
+                    <div class="option" data-page="space-exploration">
                         <div class="option-image">
                             <img src="https://wallpaperaccess.com/full/2342021.jpg" alt="Space Exploration">
                         </div>
-                        <h3>Space Exploration</h3>
+                        <h3>Exploration</h3>
                         <p>Learn about missions, discoveries, and the future of space travel</p>
                     </div>
                 </div>
@@ -107,338 +124,32 @@
                     <button id="new-fact-btn">New Fact</button>
                 </div>
                 
+                <!-- Latest Space News Preview -->
+                <div class="news-preview">
+                    <h3>Latest Space News</h3>
+                    <div id="news-preview-container" class="news-preview-items">
+                        <div class="loading-spinner"></div>
+                    </div>
+                    <a href="pages/news.html" class="view-all-btn">View All News</a>
+                </div>
+                
+                <!-- Upcoming Astronomical Events from NASA API -->
                 <div class="upcoming-events">
                     <h3>Upcoming Astronomical Events</h3>
-                    <div class="events-container">
-                        <div class="event">
-                            <div class="event-date">June 10, 2025</div>
-                            <h4>Solar Eclipse</h4>
-                            <p>An annular solar eclipse will be visible from parts of North America and Europe.</p>
-                        </div>
-                        <div class="event">
-                            <div class="event-date">August 12-13, 2025</div>
-                            <h4>Perseid Meteor Shower</h4>
-                            <p>One of the best meteor showers with up to 100 meteors per hour at its peak.</p>
-                        </div>
-                        <div class="event">
-                            <div class="event-date">October 7, 2025</div>
-                            <h4>Mars at Opposition</h4>
-                            <p>Mars will be at its closest approach to Earth, providing the best view of the red planet.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Solar System Section -->
-        <section id="solar-system">
-            <div class="back-button">← Back to Home</div>
-            <h2>Our Solar System</h2>
-            
-            <div class="solar-system-container">
-                <div class="solar-system-info">
-                    <p>Our solar system consists of the Sun and everything bound to it by gravity – the planets Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune; dwarf planets such as Pluto; dozens of moons; and millions of asteroids, comets, and meteoroids.</p>
-                    <p>Beyond Neptune, a newer class of smaller worlds called dwarf planets reign, including longtime favorite Pluto. Thousands more planets have been discovered beyond our solar system. Scientists call them exoplanets (exo means "from outside").</p>
-                </div>
-
-                <div id="planets-list" class="planets-container">
-                    <div class="planet" data-planet="mercury">
-                        <div class="planet-image">
-                            <img src="https://wallpapercave.com/wp/wp4047346.jpg" alt="Mercury">
-                        </div>
-                        <h3>Mercury</h3>
-                        <p>The smallest and innermost planet</p>
-                    </div>
-                    <div class="planet" data-planet="venus">
-                        <div class="planet-image">
-                            <img src="https://cosmosmagazine.com/wp-content/uploads/2020/04/venus_resized.jpg" alt="Venus">
-                        </div>
-                        <h3>Venus</h3>
-                        <p>Earth's closest planetary neighbor</p>
-                    </div>
-                    <div class="planet" data-planet="earth">
-                        <div class="planet-image">
-                            <img src="https://petapixel.com/assets/uploads/2023/05/Full_Earth_disc.jpg" alt="Earth">
-                        </div>
-                        <h3>Earth</h3>
-                        <p>Our home planet</p>
-                    </div>
-                    <div class="planet" data-planet="mars">
-                        <div class="planet-image">
-                            <img src="https://th.bing.com/th/id/R.6a7773c3c51f046a52789907ea31d432?rik=U6WrmnQ97KhukQ&riu=http%3a%2f%2fwww.triplespark.net%2frender%2fimg%2fmars%2ffirst%2fmars-32-2048.jpg&ehk=EfAjkzM1WOjh1RP2Dxma1S8tCipjJH1JF%2bSRT%2flGSbM%3d&risl=&pid=ImgRaw&r=0" alt="Mars">
-                        </div>
-                        <h3>Mars</h3>
-                        <p>The Red Planet</p>
-                    </div>
-                    <div class="planet" data-planet="jupiter">
-                        <div class="planet-image">
-                            <img src="https://th.bing.com/th/id/OIP.I-e2Hx2tOiIeu36ghPWavwHaHa?w=2300&h=2300&rs=1&pid=ImgDetMain" alt="Jupiter">
-                        </div>
-                        <h3>Jupiter</h3>
-                        <p>The largest planet in our solar system</p>
-                    </div>
-                    <div class="planet" data-planet="saturn">
-                        <div class="planet-image">
-                            <img src="https://wallpaperswide.com/download/saturno-wallpaper-1920x1280.jpg" alt="Saturn">
-                        </div>
-                        <h3>Saturn</h3>
-                        <p>Famous for its spectacular ring system</p>
-                    </div>
-                    <div class="planet" data-planet="uranus">
-                        <div class="planet-image">
-                            <img src="https://images.interestingengineering.com/img/iea/MRw4ZB55G1/uranus.jpg" alt="Uranus">
-                        </div>
-                        <h3>Uranus</h3>
-                        <p>The sideways planet</p>
-                    </div>
-                    <div class="planet" data-planet="neptune">
-                        <div class="planet-image">
-                            <img src="https://images.fineartamerica.com/images-medium-large/voyager-2-image-of-the-planet-neptune-nasa.jpg" alt="Neptune">
-                        </div>
-                        <h3>Neptune</h3>
-                        <p>The windiest planet</p>
+                    <div id="events-container" class="events-container">
+                        <div class="loading-spinner"></div>
                     </div>
                 </div>
                 
-                <div class="solar-system-scale">
-                    <h3>Scale of the Solar System</h3>
-                    <div class="scale-visualization">
-                        <div class="scale-item sun" title="Sun"></div>
-                        <div class="scale-item mercury" title="Mercury"></div>
-                        <div class="scale-item venus" title="Venus"></div>
-                        <div class="scale-item earth" title="Earth"></div>
-                        <div class="scale-item mars" title="Mars"></div>
-                        <div class="scale-item jupiter" title="Jupiter"></div>
-                        <div class="scale-item saturn" title="Saturn"></div>
-                        <div class="scale-item uranus" title="Uranus"></div>
-                        <div class="scale-item neptune" title="Neptune"></div>
-                    </div>
-                    <p>Relative sizes of planets (not to scale for distances)</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Outer Space Section -->
-        <section id="outer-space">
-            <div class="back-button">← Back to Home</div>
-            <h2>Outer Space Objects</h2>
-            
-            <div class="outer-space-intro">
-                <p>Beyond our solar system lies a vast cosmos filled with fascinating objects and phenomena. From the birth of stars in nebulae to the death throes of massive stars in supernovae, from the mysterious black holes to the countless galaxies that populate our universe, space is an endless frontier of discovery.</p>
-            </div>
-            
-            <div class="categories-filter">
-                <button class="category-btn active" data-category="all">All</button>
-                <button class="category-btn" data-category="stellar">Stellar Objects</button>
-                <button class="category-btn" data-category="galactic">Galactic Objects</button>
-                <button class="category-btn" data-category="exotic">Exotic Phenomena</button>
-            </div>
-            
-            <div class="space-objects-container">
-                <div class="space-object" data-object="black-hole" data-category="exotic">
-                    <div class="object-image">
-                        <img src="https://static-ssl.businessinsider.com/image/5cace7b5c6cc5071b03342f3-1448/event-horizon-telescope-black-hole-simulated-picture-image-accretion-disk-top-2.jpg" alt="Black Hole">
-                    </div>
-                    <h3>Black Holes</h3>
-                    <p>Regions where gravity is so strong that nothing can escape</p>
-                </div>
-                <div class="space-object" data-object="nebula" data-category="stellar">
-                    <div class="object-image">
-                        <img src="https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/pd36-2-pia12831.jpg?w=1300&dpr=1&fit=default&crop=default&q=80&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=6e59f9357f0945da7433827c7df49e96" alt="Nebula">
-                    </div>
-                    <h3>Nebulae</h3>
-                    <p>Clouds of gas and dust in space</p>
-                </div>
-                <div class="space-object" data-object="galaxy" data-category="galactic">
-                    <div class="object-image">
-                        <img src="https://wallpaperaccess.com/full/3257596.jpg" alt="Galaxy">
-                    </div>
-                    <h3>Galaxies</h3>
-                    <p>Vast systems of stars, gas, and dust</p>
-                </div>
-                <div class="space-object" data-object="star" data-category="stellar">
-                    <div class="object-image">
-                        <img src="https://wallpapercave.com/wp/wp2088440.jpg" alt="Star">
-                    </div>
-                    <h3>Stars</h3>
-                    <p>Luminous spheres of plasma held together by gravity</p>
-                </div>
-                <div class="space-object" data-object="supernova" data-category="stellar">
-                    <div class="object-image">
-                        <img src="https://sm.mashable.com/mashable_in/photo/default/ss_nd72.jpg" alt="Supernova">
-                    </div>
-                    <h3>Supernovae</h3>
-                    <p>Explosive deaths of massive stars</p>
-                </div>
-                <div class="space-object" data-object="pulsar" data-category="exotic">
-                    <div class="object-image">
-                        <img src="https://littleastronomy.com/wp-content/uploads/2023/01/pulsar.jpg" alt="Pulsar">
-                    </div>
-                    <h3>Pulsars</h3>
-                    <p>Rapidly rotating neutron stars</p>
-                </div>
-                <div class="space-object" data-object="quasar" data-category="exotic">
-                    <div class="object-image">
-                        <img src="https://th.bing.com/th/id/OIP.eY8SIIEUghoclk1J4W8VVQHaFj?rs=1&pid=ImgDetMain" alt="Quasar">
-                    </div>
-                    <h3>Quasars</h3>
-                    <p>Extremely luminous active galactic nuclei</p>
-                </div>
-                <div class="space-object" data-object="dark-matter" data-category="exotic">
-                    <div class="object-image">
-                        <img src="https://th.bing.com/th/id/OIP.3N39t-p-dVEmJZyvZJvMowHaFV?rs=1&pid=ImgDetMain" alt="Dark Matter">
-                    </div>
-                    <h3>Dark Matter</h3>
-                    <p>Mysterious matter that doesn't interact with light</p>
-                </div>
-                <div class="space-object" data-object="exoplanet" data-category="stellar">
-                    <div class="object-image">
-                        <img src="https://th.bing.com/th/id/OIP.2MmxCGwtHcj4QKDXIs8VNQHaEO?rs=1&pid=ImgDetMain" alt="Exoplanet">
-                    </div>
-                    <h3>Exoplanets</h3>
-                    <p>Planets orbiting stars outside our solar system</p>
-                </div>
-            </div>
-            
-            <div class="cosmic-scale">
-                <h3>The Cosmic Scale</h3>
-                <div class="scale-slider-container">
-                    <input type="range" min="1" max="5" value="5" class="slider" id="cosmic-scale-slider">
-                    <div class="scale-labels">
-                        <span>Planets</span>
-                        <span>Stars</span>
-                        <span>Nebulae</span>
-                        <span>Galaxies</span>
-                        <span>Universe</span>
-                    </div>
-                </div>
-                <div id="scale-description">
-                    <!-- Scale description will be inserted here -->
-                </div>
-            </div>
-        </section>
-        
-        <!-- Space Exploration Section -->
-        <section id="space-exploration">
-            <div class="back-button">← Back to Home</div>
-            <h2>Space Exploration</h2>
-            
-            <div class="exploration-intro">
-                <p>Humanity's journey to the stars has been one of our greatest adventures. From the first satellite to the International Space Station, from the Moon landings to rovers on Mars, we continue to push the boundaries of what's possible.</p>
-            </div>
-            
-            <div class="timeline">
-                <h3>Timeline of Space Exploration</h3>
-                <div class="timeline-container">
-                    <div class="timeline-item">
-                        <div class="timeline-date">1957</div>
-                        <div class="timeline-content">
-                            <h4>Sputnik 1</h4>
-                            <p>First artificial satellite launched by the Soviet Union</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">1961</div>
-                        <div class="timeline-content">
-                            <h4>Yuri Gagarin</h4>
-                            <p>First human in space</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">1969</div>
-                        <div class="timeline-content">
-                            <h4>Apollo 11</h4>
-                            <p>First humans on the Moon</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">1990</div>
-                        <div class="timeline-content">
-                            <h4>Hubble Space Telescope</h4>
-                            <p>Revolutionary space telescope launched</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2004</div>
-                        <div class="timeline-content">
-                            <h4>Mars Rovers</h4>
-                            <p>Spirit and Opportunity land on Mars</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2012</div>
-                        <div class="timeline-content">
-                            <h4>Curiosity Rover</h4>
-                            <p>Advanced rover lands on Mars</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2020</div>
-                        <div class="timeline-content">
-                            <h4>SpaceX Crew Dragon</h4>
-                            <p>First commercial spacecraft to carry humans to the ISS</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2021</div>
-                        <div class="timeline-content">
-                            <h4>Perseverance & Ingenuity</h4>
-                            <p>Rover and first helicopter on Mars</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-date">2022</div>
-                        <div class="timeline-content">
-                            <h4>James Webb Space Telescope</h4>
-                            <p>Most powerful space telescope launched</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="missions-grid">
-                <h3>Current & Future Missions</h3>
-                <div class="missions-container">
-                    <div class="mission">
-                        <div class="mission-image">
-                            <img src="https://spaceexplored.com/wp-content/uploads/sites/10/2021/01/Artemis_SLS.jpg?w=1024&h=576&crop=1" alt="Artemis Program">
-                        </div>
-                        <h4>Artemis Program</h4>
-                        <p>NASA's plan to return humans to the Moon by 2025 and establish sustainable lunar exploration.</p>
-                    </div>
-                    <div class="mission">
-                        <div class="mission-image">
-                            <img src="https://pbs.twimg.com/media/FiHwWbYVsAA_ICT.jpg:large" alt="Mars Sample Return">
-                        </div>
-                        <h4>Mars Sample Return</h4>
-                        <p>Mission to collect samples from Mars and return them to Earth for detailed study.</p>
-                    </div>
-                    <div class="mission">
-                        <div class="mission-image">
-                            <img src="https://th.bing.com/th/id/OIP.C7ai-7OFqIcL70_ANq-x8AHaEK?rs=1&pid=ImgDetMain" alt="Europa Clipper">
-                        </div>
-                        <h4>Europa Clipper</h4>
-                        <p>Mission to study Jupiter's moon Europa and investigate its potential for harboring life.</p>
-                    </div>
-                    <div class="mission">
-                        <div class="mission-image">
-                            <img src="https://www.esa.int/var/esa/storage/images/esa_multimedia/images/2003/01/artist_s_impression_of_jwst/9645051-3-eng-GB/Artist_s_impression_of_JWST_pillars.jpg" alt="JWST">
-                        </div>
-                        <h4>James Webb Space Telescope</h4>
-                        <p>Ongoing observations of distant galaxies, exoplanets, and the early universe.</p>
+                <!-- SpaceX Upcoming Launches -->
+                <div class="spacex-launches">
+                    <h3>Upcoming SpaceX Launches</h3>
+                    <div id="launches-container" class="launches-container">
+                        <div class="loading-spinner"></div>
                     </div>
                 </div>
             </div>
         </section>
-
-        <div id="detail-modal" class="modal">
-            <div class="modal-content">
-                <span class="close-button">&times;</span>
-                <div id="detail-content">
-                    <!-- Content will be dynamically inserted here -->
-                </div>
-            </div>
-        </div>
     </main>
 
     <footer>
@@ -450,10 +161,11 @@
             <div class="footer-section">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#solar-system">Solar System</a></li>
-                    <li><a href="#outer-space">Outer Space</a></li>
-                    <li><a href="#space-exploration">Exploration</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="pages/solar-system.html">Solar System</a></li>
+                    <li><a href="pages/outer-space.html">Outer Space</a></li>
+                    <li><a href="pages/space-exploration.html">Exploration</a></li>
+                    <li><a href="pages/news.html">Space News</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -464,12 +176,24 @@
                     <li><a href="https://www.space.com/" target="_blank">Space.com</a></li>
                 </ul>
             </div>
+            <div class="footer-section">
+                <h4>Data Sources</h4>
+                <ul>
+                    <li><a href="https://api.nasa.gov/" target="_blank">NASA API</a></li>
+                    <li><a href="https://api.spacexdata.com/" target="_blank">SpaceX API</a></li>
+                    <li><a href="https://www.spaceflightnewsapi.net/" target="_blank">Space News API</a></li>
+                </ul>
+            </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 Galactic Guide | Explore the Universe</p>
         </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script src="js/navigation.js"></script>
+    <script src="js/random-facts.js"></script>
+    <script src="js/api-handlers.js"></script>
 </body>
 </html>

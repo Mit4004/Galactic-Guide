@@ -1,0 +1,217 @@
+/* Solar System Page Styles */
+
+.solar-system-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.solar-system-info {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* Planets List */
+.planets-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.planet {
+    background: rgba(26, 26, 74, 0.7);
+    border-radius: 15px;
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    border: 1px solid rgba(110, 0, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.planet::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(110, 0, 255, 0.1), rgba(0, 180, 216, 0.1));
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: -1;
+}
+
+.planet:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(110, 0, 255, 0.4);
+}
+
+.planet:hover::before {
+    opacity: 1;
+}
+
+.planet-image {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 0 auto 1rem;
+    border: 3px solid rgba(110, 0, 255, 0.3);
+    position: relative;
+}
+
+.planet-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.planet:hover .planet-image img {
+    transform: scale(1.1);
+}
+
+/* Solar System Scale */
+.solar-system-scale {
+    margin: 3rem auto;
+    text-align: center;
+}
+
+.scale-visualization {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 150px;
+    margin: 2rem 0;
+    position: relative;
+}
+
+.scale-item {
+    border-radius: 50%;
+    position: absolute;
+    background: var(--primary);
+    box-shadow: 0 0 20px rgba(110, 0, 255, 0.5);
+}
+
+.scale-item.sun {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #ff7b00, #ffb700);
+    box-shadow: 0 0 30px rgba(255, 123, 0, 0.8);
+    left: 10%;
+}
+
+.scale-item.mercury {
+    width: 10px;
+    height: 10px;
+    background: #a5a5a5;
+    left: 25%;
+}
+
+.scale-item.venus {
+    width: 15px;
+    height: 15px;
+    background: #e8cda7;
+    left: 35%;
+}
+
+.scale-item.earth {
+    width: 16px;
+    height: 16px;
+    background: #4ca7e8;
+    left: 45%;
+}
+
+.scale-item.mars {
+    width: 12px;
+    height: 12px;
+    background: #e27b58;
+    left: 55%;
+}
+
+.scale-item.jupiter {
+    width: 40px;
+    height: 40px;
+    background: #e0ae6f;
+    left: 65%;
+}
+
+.scale-item.saturn {
+    width: 35px;
+    height: 35px;
+    background: #e8d080;
+    left: 75%;
+}
+
+.scale-item.uranus {
+    width: 25px;
+    height: 25px;
+    background: #a5d2e0;
+    left: 85%;
+}
+
+.scale-item.neptune {
+    width: 24px;
+    height: 24px;
+    background: #5580e0;
+    left: 95%;
+}
+
+/* Planet Detail Modal */
+#planet-detail-content {
+    color: var(--text);
+}
+
+#planet-detail-content h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+#planet-detail-content .detail-image {
+    width: 100%;
+    max-height: 300px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
+
+#planet-detail-content .detail-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+#planet-detail-content p {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+#planet-detail-content .fact-list {
+    margin: 1.5rem 0;
+}
+
+#planet-detail-content .fact-list li {
+    margin-bottom: 0.8rem;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+#planet-detail-content .fact-list li:before {
+    content: "•";
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+    font-size: 1.5rem;
+}
+
+#planet-detail-content .detail-info {
+    background: rgba(10, 10, 42, 0.5);
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin-top: 1.5rem;
+}

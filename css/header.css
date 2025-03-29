@@ -1,0 +1,186 @@
+/* Mobile Menu */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1000;
+    transition: right 0.3s ease;
+}
+
+.mobile-menu.open {
+    right: 0;
+}
+
+.mobile-menu-content {
+    padding: 2rem;
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.close-menu-btn {
+    font-size: 2rem;
+    color: white;
+    background: none;
+}
+
+.mobile-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mobile-nav .nav-link {
+    display: block;
+    padding: 1rem;
+    font-size: 1.2rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+.mobile-nav .nav-link:hover,
+.mobile-nav .nav-link.active {
+    background-color: rgba(110, 0, 255, 0.2);
+}
+
+/* Header */
+header {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0.75rem 1rem;
+}
+
+.header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    color: white;
+}
+
+.menu-icon {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background-color: white;
+    position: relative;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+    content: '';
+    position: absolute;
+    width: 24px;
+    height: 3px;
+    background-color: white;
+    left: 0;
+}
+
+.menu-icon::before {
+    top: -8px;
+}
+
+.menu-icon::after {
+    bottom: -8px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+}
+
+.planet-circle {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    border-radius: 50%;
+    top: 5px;
+    left: 5px;
+    box-shadow: 0 0 15px rgba(110, 0, 255, 0.7);
+}
+
+.planet-ring {
+    position: absolute;
+    width: 40px;
+    height: 10px;
+    background: rgba(157, 78, 221, 0.6);
+    border-radius: 50%;
+    top: 15px;
+    left: 0;
+    transform: rotate(-20deg);
+}
+
+.logo h1 {
+    margin-bottom: 0;
+    font-size: 1.8rem;
+}
+
+.logo p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 0;
+}
+
+.desktop-nav ul {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    color: var(--text);
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.nav-link:hover, .nav-link.active {
+    background: rgba(110, 0, 255, 0.2);
+    color: #ffffff;
+}
+
+/* Responsive Header */
+@media (max-width: 992px) {
+    .desktop-nav {
+        display: none;
+    }
+    
+    .menu-btn {
+        display: block;
+    }
+}
+
+@media (max-width: 768px) {
+    .logo p {
+        display: none;
+    }
+}

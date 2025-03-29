@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Exploration | Galactic Guide</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/space-exploration.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Mono&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <div class="planet-ring"></div>
+                        <div class="planet-circle"></div>
+                    </div>
+                    <h1>Galactic Guide</h1>
+                </div>
+                <button class="close-menu-btn" id="close-menu-btn">&times;</button>
+            </div>
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="solar-system.html" class="nav-link">Solar System</a></li>
+                    <li><a href="outer-space.html" class="nav-link">Outer Space</a></li>
+                    <li><a href="space-exploration.html" class="nav-link active">Exploration</a></li>
+                    <li><a href="news.html" class="nav-link">Space News</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="header-left">
+                <button class="menu-btn" id="menu-btn">
+                    <span class="menu-icon"></span>
+                </button>
+                <div class="logo">
+                    <div class="logo-icon">
+                        <div class="planet-ring"></div>
+                        <div class="planet-circle"></div>
+                    </div>
+                    <div>
+                        <h1>Galactic Guide</h1>
+                        <p>Explore the wonders of our universe</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="solar-system.html" class="nav-link">Solar System</a></li>
+                    <li><a href="outer-space.html" class="nav-link">Outer Space</a></li>
+                    <li><a href="space-exploration.html" class="nav-link active">Exploration</a></li>
+                    <li><a href="news.html" class="nav-link">Space News</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="back-button">
+            <a href="../index.html">← Back to Home</a>
+        </div>
+        
+        <h2>Space Exploration</h2>
+        
+        <div class="exploration-intro">
+            <p>Humanity's journey to the stars has been one of our greatest adventures. From the first satellite to the International Space Station, from the Moon landings to rovers on Mars, we continue to push the boundaries of exploration.</p>
+        </div>
+        
+        <div class="exploration-tabs">
+            <button class="tab-btn active" data-tab="timeline">Timeline</button>
+            <button class="tab-btn" data-tab="missions">Key Missions</button>
+            <button class="tab-btn" data-tab="future">Future Exploration</button>
+        </div>
+        
+        <div id="timeline" class="tab-content active">
+            <h3>Timeline of Space Exploration</h3>
+            
+            <div class="timeline">
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <div class="timeline-date">1957</div>
+                        <div class="timeline-content">
+                            <h4>Sputnik 1</h4>
+                            <p>The Soviet Union launches Sputnik 1, the first artificial Earth satellite, beginning the Space Age.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">1961</div>
+                        <div class="timeline-content">
+                            <h4>First Human in Space</h4>
+                            <p>Yuri Gagarin becomes the first human to journey into outer space aboard Vostok 1.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">1969</div>
+                        <div class="timeline-content">
+                            <h4>Moon Landing</h4>
+                            <p>Neil Armstrong and Buzz Aldrin become the first humans to walk on the Moon during the Apollo 11 mission.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">1990</div>
+                        <div class="timeline-content">
+                            <h4>Hubble Space Telescope</h4>
+                            <p>NASA launches the Hubble Space Telescope, revolutionizing astronomy with its deep space observations.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">1998</div>
+                        <div class="timeline-content">
+                            <h4>International Space Station</h4>
+                            <p>Construction begins on the International Space Station, the largest human-made structure in space.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2004</div>
+                        <div class="timeline-content">
+                            <h4>Mars Rovers</h4>
+                            <p>NASA's rovers Spirit and Opportunity land on Mars, beginning long-term exploration of the Martian surface.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2012</div>
+                        <div class="timeline-content">
+                            <h4>Curiosity Rover</h4>
+                            <p>NASA's Curiosity rover lands on Mars, equipped with advanced scientific instruments to study the planet's geology and climate.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2015</div>
+                        <div class="timeline-content">
+                            <h4>Pluto Flyby</h4>
+                            <p>NASA's New Horizons spacecraft completes the first flyby of Pluto, providing detailed images of the dwarf planet.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2020</div>
+                        <div class="timeline-content">
+                            <h4>Commercial Crew</h4>
+                            <p>SpaceX's Crew Dragon becomes the first commercial spacecraft to carry astronauts to the International Space Station.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">2021</div>
+                        <div class="timeline-content">
+                            <h4>Mars Helicopter</h4>
+                            <p>NASA's Ingenuity helicopter performs the first powered flight on another planet, taking off from the Martian surface.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="missions" class="tab-content">
+            <h3>Key Space Missions</h3>
+            
+            <div class="missions-grid">
+                <div class="missions-container">
+                    <div class="mission">
+                        <div class="mission-image">
+                            <img src="https://www.nasa.gov/wp-content/uploads/2019/07/apollo11-landing-9.jpg" alt="Apollo 11">
+                        </div>
+                        <h4>Apollo 11</h4>
+                        <p class="mission-date">July 16-24, 1969</p>
+                        <p>The first manned mission to land on the Moon, carrying astronauts Neil Armstrong, Buzz Aldrin, and Michael Collins.</p>
+                    </div>
+                    
+                    <div class="mission">
+                        <div class="mission-image">
+                            <img src="https://www.nasa.gov/wp-content/uploads/2023/03/739830main_hubble_release_full_full.jpg" alt="Hubble Space Telescope">
+                        </div>
+                        <h4>Hubble Space Telescope</h4>
+                        <p class="mission-date">Launched April 24, 1990</p>
+                        <p>A space telescope that has made over 1.4 million observations and revolutionized our understanding of the universe.</p>
+                    </div>
+                    
+                    <div class="mission">
+                        <div class="mission-image">
+                            <img src="https://www.nasa.gov/wp-content/uploads/2023/03/iss064e028076.jpg" alt="International Space Station">
+                        </div>
+                        <h4>International Space Station</h4>
+                        <p class="mission-date">Assembly began 1998</p>
+                        <p>A modular space station in low Earth orbit that serves as a multinational collaborative project and research laboratory.</p>
+                    </div>
+                    
+                    <div class="mission">
+                        <div class="mission-image">
+                            <img src="https://mars.nasa.gov/system/resources/detail_files/25058_PIA24428-web.jpg" alt="Mars Perseverance Rover">
+                        </div>
+                        <h4>Mars Perseverance Rover</h4>
+                        <p class="mission-date">Launched July 30, 2020</p>
+                        <p>A rover exploring Mars with a mission to seek signs of ancient life and collect samples for future return to Earth.</p>
+                    </div>
+                    
+                    <div class="mission">
+                        <div class="mission-image">
+                            <img src="https://www.nasa.gov/wp-content/uploads/2023/03/pia19873-1041.jpg" alt="New Horizons">
+                        </div>
+                        <h4>New Horizons</h4>
+                        <p class="mission-date">Launched January 19, 2006</p>
+                        <p>A spacecraft that conducted the first flyby of Pluto in 2015 and is now exploring the Kuiper Belt.</p>
+                    </div>
+                    
+                    <div class="mission">
+                        <div class="mission-image">
+                            <img src="https://www.nasa.gov/wp-content/uploads/2023/03/pia22946-16.jpg" alt="Voyager">
+                        </div>
+                        <h4>Voyager 1 & 2</h4>
+                        <p class="mission-date">Launched 1977</p>
+                        <p>Twin spacecraft that have explored the outer planets and are now in interstellar space, making them the most distant human-made objects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="future" class="tab-content">
+            <h3>Future of Space Exploration</h3>
+            
+            <div class="future-exploration">
+                <div class="future-section">
+                    <h4>Artemis Program</h4>
+                    <div class="future-content">
+                        <div class="future-image">
+                            <img src="https://www.nasa.gov/wp-content/uploads/2022/08/artemis_i_identifier_color_506.png" alt="Artemis Program">
+                        </div>
+                        <div class="future-text">
+                            <p>NASA's Artemis program aims to return humans to the Moon by 2025, including the first woman and person of color. The program will establish sustainable exploration by the end of the decade, paving the way for future missions to Mars.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="future-section">
+                    <h4>Mars Human Exploration</h4>
+                    <div class="future-content">
+                        <div class="future-image">
+                            <img src="https://www.nasa.gov/wp-content/uploads/2019/10/nasa-mars-human-landing-sites-workshop-5-davila.jpg" alt="Mars Human Exploration">
+                        </div>
+                        <div class="future-text">
+                            <p>Multiple space agencies and private companies are developing plans to send humans to Mars in the 2030s. These missions will require new technologies for long-duration spaceflight, radiation protection, and sustainable habitation on the Red Planet.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="future-section">
+                    <h4>James Webb Space Telescope</h4>
+                    <div class="future-content">
+                        <div class="future-image">
+                            <img src="https://www.nasa.gov/wp-content/uploads/2023/03/webb-first-deepfield-sm.jpg" alt="James Webb Space Telescope">
+                        </div>
+                        <div class="future-text">
+                            <p>Launched in December 2021, the James Webb Space Telescope is the most powerful space telescope ever built. It will observe the universe in infrared light, revealing the first stars and galaxies that formed after the Big Bang and studying exoplanet atmospheres.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="future-section">
+                    <h4>Commercial Space Tourism</h4>
+                    <div class="future-content">
+                        <div class="future-image">
+                            <img src="https://www.virgingalactic.com/wp-content/uploads/2021/07/VG-Unity22-SpaceshipTwo-and-WhiteKnightTwo-scaled.jpg" alt="Space Tourism">
+                        </div>
+                        <div class="future-text">
+                            <p>Companies like SpaceX, Blue Origin, and Virgin Galactic are developing vehicles for commercial space tourism. In the coming decades, space travel may become accessible to more people, opening up new opportunities for research, education, and recreation in space.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Galactic Guide</h3>
+                <p>Your journey through the cosmos starts here</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="solar-system.html">Solar System</a></li>
+                    <li><a href="outer-space.html">Outer Space</a></li>
+                    <li><a href="space-exploration.html">Exploration</a></li>
+                    <li><a href="news.html">Space News</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="https://www.nasa.gov/" target="_blank">NASA</a></li>
+                    <li><a href="https://www.esa.int/" target="_blank">ESA</a></li>
+                    <li><a href="https://www.space.com/" target="_blank">Space.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Galactic Guide | Explore the Universe</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/space-exploration.js"></script>
+</body>
+</html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System | Galactic Guide</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/solar-system.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Mono&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="twinkling"></div>
+    
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-content">
+            <div class="mobile-menu-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <div class="planet-ring"></div>
+                        <div class="planet-circle"></div>
+                    </div>
+                    <h1>Galactic Guide</h1>
+                </div>
+                <button class="close-menu-btn" id="close-menu-btn">&times;</button>
+            </div>
+            <nav class="mobile-nav">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="solar-system.html" class="nav-link active">Solar System</a></li>
+                    <li><a href="outer-space.html" class="nav-link">Outer Space</a></li>
+                    <li><a href="space-exploration.html" class="nav-link">Exploration</a></li>
+                    <li><a href="news.html" class="nav-link">Space News</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="header-left">
+                <button class="menu-btn" id="menu-btn">
+                    <span class="menu-icon"></span>
+                </button>
+                <div class="logo">
+                    <div class="logo-icon">
+                        <div class="planet-ring"></div>
+                        <div class="planet-circle"></div>
+                    </div>
+                    <div>
+                        <h1>Galactic Guide</h1>
+                        <p>Explore the wonders of our universe</p>
+                    </div>
+                </div>
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                    <li><a href="solar-system.html" class="nav-link active">Solar System</a></li>
+                    <li><a href="outer-space.html" class="nav-link">Outer Space</a></li>
+                    <li><a href="space-exploration.html" class="nav-link">Exploration</a></li>
+                    <li><a href="news.html" class="nav-link">Space News</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="back-button">
+            <a href="../index.html">← Back to Home</a>
+        </div>
+        
+        <h2>Our Solar System</h2>
+        
+        <div class="solar-system-container">
+            <div class="solar-system-info">
+                <p>Our solar system consists of the Sun and everything bound to it by gravity – the planets Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, and Neptune; dwarf planets such as Pluto; dozens of moons; and millions of asteroids, comets, and meteoroids.</p>
+                <p>Beyond Neptune, a newer class of smaller worlds called dwarf planets reign, including longtime favorite Pluto. Thousands more planets have been discovered beyond our solar system. Scientists call them exoplanets (exo means "from outside").</p>
+            </div>
+
+            <div id="planets-container" class="planets-container">
+                <div class="loading-spinner"></div>
+            </div>
+            
+            <div class="solar-system-scale">
+                <h3>Scale of the Solar System</h3>
+                <div class="scale-visualization">
+                    <div class="scale-item sun" title="Sun"></div>
+                    <div class="scale-item mercury" title="Mercury"></div>
+                    <div class="scale-item venus" title="Venus"></div>
+                    <div class="scale-item earth" title="Earth"></div>
+                    <div class="scale-item mars" title="Mars"></div>
+                    <div class="scale-item jupiter" title="Jupiter"></div>
+                    <div class="scale-item saturn" title="Saturn"></div>
+                    <div class="scale-item uranus" title="Uranus"></div>
+                    <div class="scale-item neptune" title="Neptune"></div>
+                </div>
+                <p>Relative sizes of planets (not to scale for distances)</p>
+            </div>
+        </div>
+        
+        <div id="planet-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <div id="planet-detail-content">
+                    <!-- Content will be dynamically inserted here -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Galactic Guide</h3>
+                <p>Your journey through the cosmos starts here</p>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="solar-system.html">Solar System</a></li>
+                    <li><a href="outer-space.html">Outer Space</a></li>
+                    <li><a href="space-exploration.html">Exploration</a></li>
+                    <li><a href="news.html">Space News</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="https://www.nasa.gov/" target="_blank">NASA</a></li>
+                    <li><a href="https://www.esa.int/" target="_blank">ESA</a></li>
+                    <li><a href="https://www.space.com/" target="_blank">Space.com</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Galactic Guide | Explore the Universe</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="../js/main.js"></script>
+    <script src="../js/navigation.js"></script>
+    <script src="../js/modal.js"></script>
+    <script src="../js/solar-system.js"></script>
+</body>
+</html>
