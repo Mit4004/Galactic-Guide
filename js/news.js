@@ -1,4 +1,3 @@
-// Space News Page Functionality
 
 document.addEventListener('DOMContentLoaded', function() {
     const newsContainer = document.getElementById('news-container');
@@ -9,19 +8,16 @@ document.addEventListener('DOMContentLoaded', function() {
     const nextPageBtn = document.getElementById('next-page');
     const pageInfo = document.getElementById('page-info');
     
-    // News API settings
     const articlesPerPage = 9;
     let currentPage = 1;
     let totalPages = 1;
     let currentFilter = 'all';
     let currentSearch = '';
     
-    // Initial news load
     if (newsContainer) {
         fetchSpaceNews();
     }
     
-    // Search functionality
     if (newsSearchBtn && newsSearchInput) {
         newsSearchBtn.addEventListener('click', function() {
             currentSearch = newsSearchInput.value.trim();
@@ -38,15 +34,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Filter buttons
     if (filterButtons) {
         filterButtons.forEach(button => {
             button.addEventListener('click', function() {
-                // Update active button
                 filterButtons.forEach(btn => btn.classList.remove('active'));
                 this.classList.add('active');
                 
-                // Update filter and fetch news
                 currentFilter = this.getAttribute('data-filter');
                 currentPage = 1;
                 fetchSpaceNews();
@@ -54,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Pagination
     if (prevPageBtn) {
         prevPageBtn.addEventListener('click', function() {
             if (currentPage > 1) {
@@ -73,23 +65,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Fetch space news from API
     async function fetchSpaceNews() {
         if (!newsContainer) return;
         
         newsContainer.innerHTML = '<div class="loading-spinner"></div>';
         
         try {
-            // Build query parameters
             let url = `https://api.spaceflightnewsapi.net/v4/articles/?limit=${articlesPerPage}&offset=${(currentPage - 1) * articlesPerPage}`;
             
-            // Add search term if provided
             let searchQuery = '';
             if (currentSearch) {
                 searchQuery += currentSearch;
             }
             
-            // Add filter if not 'all'
             if (currentFilter !== 'all') {
                 searchQuery += (searchQuery ? ' ' : '') + currentFilter;
             }
@@ -98,17 +86,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 url += `&search=${encodeURIComponent(searchQuery)}`;
             }
             
-            // Fetch articles
             const articlesResponse = await fetch(url);
             const data = await articlesResponse.json();
             const articles = data.results;
             
-            // Fetch total count for pagination
-            const totalCount = data.count || 0;
+            let totalCount = data.count || 0;
+            const maxPages = 3;
+            if (totalCount > articlesPerPage * maxPages) {
+                totalCount = articlesPerPage * maxPages;
+            }
             
             totalPages = Math.ceil(totalCount / articlesPerPage);
             
-            // Update pagination UI
             if (pageInfo) {
                 pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
             }
@@ -121,7 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 nextPageBtn.disabled = currentPage >= totalPages;
             }
             
-            // Display articles
             if (articles.length === 0) {
                 newsContainer.innerHTML = '<p class="no-results">No news articles found matching your criteria.</p>';
                 return;
@@ -160,7 +148,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Helper function to truncate text
     function truncateText(text, maxLength) {
         if (!text) return '';
         if (text.length <= maxLength) return text;

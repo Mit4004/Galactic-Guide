@@ -1,0 +1,8 @@
+{
+  "name": "galactic-guide",
+  "version": "1.0.0",
+  "description": "Interactive Space Website",
+  "scripts": {
+    "build": "echo \"const config = { NASA_API_KEY: '$NASA_API_KEY' };\" > js/config.js"
+  }
+}

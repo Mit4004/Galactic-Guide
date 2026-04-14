@@ -1,12 +1,9 @@
-// Navigation functionality
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu elements
     const menuBtn = document.getElementById('menu-btn');
     const closeMenuBtn = document.getElementById('close-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     
-    // Open mobile menu
     if (menuBtn) {
         menuBtn.addEventListener('click', function() {
             mobileMenu.classList.add('open');
@@ -14,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Close mobile menu
     if (closeMenuBtn) {
         closeMenuBtn.addEventListener('click', function() {
             mobileMenu.classList.remove('open');
@@ -22,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Close mobile menu when clicking outside
     document.addEventListener('click', function(event) {
         if (mobileMenu && mobileMenu.classList.contains('open') && !mobileMenu.contains(event.target) && event.target !== menuBtn) {
             mobileMenu.classList.remove('open');
@@ -30,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Handle navigation options on home page
     const options = document.querySelectorAll('.option[data-page]');
     options.forEach(option => {
         option.addEventListener('click', function() {

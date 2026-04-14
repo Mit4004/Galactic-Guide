@@ -2,6 +2,60 @@
 
 .news-filters {
     margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search-container {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    margin-bottom: 0.5rem;
+    box-shadow: 0 4px 15px rgba(110, 0, 255, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+#news-search {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid rgba(110, 0, 255, 0.4);
+    background: rgba(10, 10, 30, 0.8);
+    color: white;
+    font-size: 1rem;
+    font-family: 'Exo 2', sans-serif;
+    outline: none;
+    transition: border-color 0.3s;
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+}
+
+#news-search::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+#news-search:focus {
+    border-color: #8af;
+}
+
+#news-search-btn {
+    padding: 12px 20px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+    border-radius: 0 8px 8px 0;
+}
+
+#news-search-btn:hover {
+    background: var(--primary-light);
+}
+
+#news-search-btn:active {
+    transform: scale(0.98);
 }
 
 .filter-buttons {

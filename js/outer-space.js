@@ -1,4 +1,3 @@
-// Outer Space Page Functionality
 
 document.addEventListener('DOMContentLoaded', function() {
     const spaceObjectsContainer = document.getElementById('space-objects-container');
@@ -6,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const spaceObjectDetailContent = document.getElementById('space-object-detail-content');
     const categoryButtons = document.querySelectorAll('.category-btn');
     
-    // Load space objects data from JSON file
     fetch('/data/space-objects.json')
         .then(response => response.json())
         .then(data => {
@@ -27,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 spaceObjectsContainer.innerHTML = objectsHTML;
                 
-                // Add event listeners to space objects
                 const spaceObjectElements = document.querySelectorAll('.space-object');
                 spaceObjectElements.forEach(object => {
                     object.addEventListener('click', function() {
@@ -48,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     
-    // Function to open modal
     function openModal(modalId) {
         const modal = document.getElementById(modalId);
         if (modal) {
@@ -56,7 +52,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Function to display space object details
     function showSpaceObjectDetails(object) {
         if (!spaceObjectDetailContent || !spaceObjectModal) return;
         
@@ -90,17 +85,14 @@ document.addEventListener('DOMContentLoaded', function() {
         openModal('space-object-modal');
     }
     
-    // Category filter functionality
     if (categoryButtons) {
         categoryButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const category = this.getAttribute('data-category');
                 
-                // Update active button
                 categoryButtons.forEach(btn => btn.classList.remove('active'));
                 this.classList.add('active');
                 
-                // Filter space objects
                 const spaceObjects = document.querySelectorAll('.space-object');
                 spaceObjects.forEach(object => {
                     if (category === 'all' || object.getAttribute('data-category') === category) {
@@ -113,7 +105,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    // Helper function to truncate text
     function truncateText(text, maxLength) {
         if (!text) return '';
         if (text.length <= maxLength) return text;

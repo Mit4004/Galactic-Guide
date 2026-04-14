@@ -1,4 +1,3 @@
-// Solar System Page Functionality
 
 document.addEventListener('DOMContentLoaded', function() {
     const planetsContainer = document.getElementById('planets-container');
@@ -6,7 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const planetDetailContent = document.getElementById('planet-detail-content');
     const closeButtons = document.querySelectorAll('.close-button');
     
-    // Load planet data from JSON file
     fetch('/data/planets.json')
         .then(response => response.json())
         .then(data => {
@@ -27,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 planetsContainer.innerHTML = planetsHTML;
                 
-                // Add event listeners to planets
                 const planetElements = document.querySelectorAll('.planet');
                 planetElements.forEach(planet => {
                     planet.addEventListener('click', function() {
@@ -48,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     
-    // Function to display planet details
     function showPlanetDetails(planet) {
         if (!planetDetailContent || !planetModal) return;
         
@@ -82,7 +78,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.style.overflow = 'hidden'; // Prevent scrolling
     }
     
-    // Close modal when clicking the close button
     closeButtons.forEach(button => {
         button.addEventListener('click', function() {
             if (planetModal) {
@@ -92,7 +87,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Close modal when clicking outside the modal content
     window.addEventListener('click', function(event) {
         if (event.target === planetModal) {
             planetModal.style.display = 'none';
@@ -100,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Close modal when pressing Escape key
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape' && planetModal && planetModal.style.display === 'block') {
             planetModal.style.display = 'none';

@@ -1,13 +1,9 @@
-// Modal functionality for all pages
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Get all modals
     const modals = document.querySelectorAll('.modal');
     
-    // Get all close buttons
     const closeButtons = document.querySelectorAll('.close-button');
     
-    // Function to close modal
     function closeModal(modal) {
         if (modal) {
             modal.style.display = 'none';
@@ -15,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Close modal when clicking the close button
     closeButtons.forEach(button => {
         button.addEventListener('click', function() {
             const modal = this.closest('.modal');
@@ -23,7 +18,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Close modal when clicking outside the modal content
     window.addEventListener('click', function(event) {
         modals.forEach(modal => {
             if (event.target === modal) {
@@ -32,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Close modal when pressing Escape key
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
             modals.forEach(modal => {
@@ -43,7 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Function to open modal
     window.openModal = function(modalId) {
         const modal = document.getElementById(modalId);
         if (modal) {

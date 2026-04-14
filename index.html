@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Galactic Guide | Explore the Universe</title>
-    <!-- CSS Files -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Space+Mono&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -19,7 +17,6 @@
     <div class="stars"></div>
     <div class="twinkling"></div>
     
-    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu">
         <div class="mobile-menu-content">
             <div class="mobile-menu-header">
@@ -44,7 +41,6 @@
         </div>
     </div>
     
-    <!-- Header -->
     <header>
         <div class="header-content">
             <div class="header-left">
@@ -75,7 +71,6 @@
     </header>
 
     <main>
-        <!-- Home Section -->
         <section id="home" class="active">
             <div class="container">
                 <h2>Choose Your Cosmic Journey</h2>
@@ -84,7 +79,6 @@
                     <button id="search-button">Search</button>
                 </div>
                 
-                <!-- NASA Astronomy Picture of the Day -->
                 <div class="nasa-apod">
                     <h3>NASA Astronomy Picture of the Day</h3>
                     <div id="apod-container" class="apod-container">
@@ -119,12 +113,10 @@
                 <div class="did-you-know">
                     <h3>Did You Know?</h3>
                     <div id="random-fact">
-                        <!-- Random fact will be inserted here -->
                     </div>
                     <button id="new-fact-btn">New Fact</button>
                 </div>
                 
-                <!-- Latest Space News Preview -->
                 <div class="news-preview">
                     <h3>Latest Space News</h3>
                     <div id="news-preview-container" class="news-preview-items">
@@ -133,7 +125,6 @@
                     <a href="pages/news.html" class="view-all-btn">View All News</a>
                 </div>
                 
-                <!-- Upcoming Astronomical Events from NASA API -->
                 <div class="upcoming-events">
                     <h3>Upcoming Astronomical Events</h3>
                     <div id="events-container" class="events-container">
@@ -141,9 +132,8 @@
                     </div>
                 </div>
                 
-                <!-- SpaceX Upcoming Launches -->
                 <div class="spacex-launches">
-                    <h3>Upcoming SpaceX Launches</h3>
+                    <h3>Recent ISRO Missions</h3>
                     <div id="launches-container" class="launches-container">
                         <div class="loading-spinner"></div>
                     </div>
@@ -180,7 +170,7 @@
                 <h4>Data Sources</h4>
                 <ul>
                     <li><a href="https://api.nasa.gov/" target="_blank">NASA API</a></li>
-                    <li><a href="https://api.spacexdata.com/" target="_blank">SpaceX API</a></li>
+                    <li><a href="https://services.isrostats.in/api/launches" target="_blank">ISRO Stats API</a></li>
                     <li><a href="https://www.spaceflightnewsapi.net/" target="_blank">Space News API</a></li>
                 </ul>
             </div>
@@ -190,10 +180,10 @@
         </div>
     </footer>
 
-    <!-- JavaScript Files -->
     <script src="js/main.js"></script>
     <script src="js/navigation.js"></script>
     <script src="js/random-facts.js"></script>
+    <script src="js/config.js"></script>
     <script src="js/api-handlers.js"></script>
 </body>
 </html>

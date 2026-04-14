@@ -1,19 +1,15 @@
-// Random Space Facts
 
 document.addEventListener('DOMContentLoaded', function() {
     const randomFactElement = document.getElementById('random-fact');
     const newFactButton = document.getElementById('new-fact-btn');
     
     if (randomFactElement) {
-        // Fetch facts from JSON file
         fetch('/data/facts.json')
             .then(response => response.json())
             .then(data => {
                 if (data && data.facts && data.facts.length > 0) {
-                    // Show initial random fact
                     showRandomFact(data.facts);
                     
-                    // New fact button
                     if (newFactButton) {
                         newFactButton.addEventListener('click', function() {
                             showRandomFact(data.facts);
@@ -26,7 +22,6 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => {
                 console.error('Error loading space facts:', error);
                 
-                // Fallback to hardcoded facts if JSON file fails to load
                 const fallbackFacts = [
                     "There are more stars in the universe than grains of sand on all the beaches on Earth.",
                     "The footprints left by the Apollo astronauts on the Moon will probably stay there for at least 100 million years.",
@@ -42,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 showRandomFact(fallbackFacts);
                 
-                // New fact button with fallback facts
                 if (newFactButton) {
                     newFactButton.addEventListener('click', function() {
                         showRandomFact(fallbackFacts);
@@ -51,7 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     }
     
-    // Function to display a random fact
     function showRandomFact(facts) {
         const randomIndex = Math.floor(Math.random() * facts.length);
         randomFactElement.textContent = facts[randomIndex];

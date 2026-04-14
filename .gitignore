@@ -1,0 +1,12 @@
+# Configuration files
+js/config.js
+
+# Dependencies
+node_modules/
+.env
+
+# Editor logs
+.vscode/
+.idea/
+*.log
+.DS_Store

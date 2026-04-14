@@ -1,17 +1,13 @@
-// API Handlers for NASA, SpaceX, and News APIs
 
 document.addEventListener('DOMContentLoaded', function() {
-    // NASA API Key - Replace with your own API key from https://api.nasa.gov/
-    const NASA_API_KEY = 'DEMO_KEY';
+    const NASA_API_KEY = (typeof config !== 'undefined' && config.NASA_API_KEY) ? config.NASA_API_KEY : 'DEMO_KEY';
     
-    // Helper function to format dates
     function formatDate(dateString) {
         const date = new Date(dateString);
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         return date.toLocaleDateString('en-US', options);
     }
     
-    // Helper function to truncate text
     function truncateText(text, maxLength) {
         if (text.length > maxLength) {
             return text.substring(0, maxLength) + '...';
@@ -20,35 +16,40 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     
-    // Fetch NASA Astronomy Picture of the Day
     const apodContainer = document.getElementById('apod-container');
     if (apodContainer) {
         fetchNASAAPOD();
     }
     
-    // Fetch upcoming astronomical events
     const eventsContainer = document.getElementById('events-container');
     if (eventsContainer) {
         fetchAstronomicalEvents();
     }
     
-    // Fetch SpaceX launches
     const launchesContainer = document.getElementById('launches-container');
     if (launchesContainer) {
-        fetchSpaceXLaunches();
+        fetchISROLaunches();
     }
     
-    // Fetch space news preview
     const newsPreviewContainer = document.getElementById('news-preview-container');
     if (newsPreviewContainer) {
         fetchSpaceNewsPreview();
     }
     
-    // NASA APOD API
     async function fetchNASAAPOD() {
         try {
             const response = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${NASA_API_KEY}`);
             const data = await response.json();
+            
+            if (data.error) {
+                apodContainer.innerHTML = `
+                    <div style="text-align: center; padding: 20px; background: rgba(255, 50, 50, 0.1); border-radius: 10px; border: 1px solid rgba(255, 50, 50, 0.3);">
+                        <h4 style="color: #ffaaaa;">API Rate Limit Reached</h4>
+                        <p style="font-size: 0.9rem;">The current API key has hit its hourly rate limit. Make sure your valid key is placed inside <code>js/config.js</code>.</p>
+                    </div>
+                `;
+                return;
+            }
             
             if (data && apodContainer) {
                 let mediaContent = '';
@@ -73,10 +74,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // NASA Neo - Near Earth Object API for upcoming events
     async function fetchAstronomicalEvents() {
         try {
-            // Get today's date and 7 days from now
             const today = new Date();
             const nextWeek = new Date(today);
             nextWeek.setDate(nextWeek.getDate() + 7);
@@ -87,18 +86,20 @@ document.addEventListener('DOMContentLoaded', function() {
             const response = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=${NASA_API_KEY}`);
             const data = await response.json();
             
+            if (data.error) {
+                if (eventsContainer) eventsContainer.innerHTML = '<p style="color:#ffaaaa">NASA API rate limit exceeded. Get a free key at api.nasa.gov.</p>';
+                return;
+            }
+            
             if (data && data.near_earth_objects && eventsContainer) {
                 let eventsHTML = '';
                 let eventCount = 0;
                 
-                // Process each day's NEOs
                 for (const [date, neos] of Object.entries(data.near_earth_objects)) {
-                    // Sort by closest approach
                     neos.sort((a, b) => {
                         return a.close_approach_data[0].miss_distance.kilometers - b.close_approach_data[0].miss_distance.kilometers;
                     });
                     
-                    // Take only the closest NEO for each day
                     if (neos.length > 0 && eventCount < 3) {
                         const neo = neos[0];
                         const approachDate = new Date(neo.close_approach_data[0].close_approach_date);
@@ -138,20 +139,18 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // SpaceX API for upcoming launches
-    async function fetchSpaceXLaunches() {
+    async function fetchISROLaunches() {
         try {
-            const response = await fetch('https://api.spacexdata.com/v4/launches/upcoming');
+            const response = await fetch('https://services.isrostats.in/api/launches');
             const launches = await response.json();
             
             if (launches && launchesContainer) {
                 let launchesHTML = '';
                 
-                // Display up to 3 upcoming launches
-                const upcomingLaunches = launches.slice(0, 3);
+                const recentLaunches = launches.slice(0, 3);
                 
-                upcomingLaunches.forEach(launch => {
-                    const launchDate = new Date(launch.date_utc);
+                recentLaunches.forEach(launch => {
+                    const launchDate = new Date(launch.LaunchDate);
                     const formattedDate = launchDate.toLocaleDateString('en-US', {
                         month: 'long',
                         day: 'numeric',
@@ -161,27 +160,26 @@ document.addEventListener('DOMContentLoaded', function() {
                     launchesHTML += `
                         <div class="launch">
                             <div class="launch-date">${formattedDate}</div>
-                            <h4>${launch.name}</h4>
-                            <p class="launch-mission">${launch.details || 'Mission details not available'}</p>
-                            <p>Rocket: ${launch.rocket?.name || 'Unknown'}</p>
-                            <p>Launch Site: ${launch.launchpad?.name || 'Unknown'}</p>
+                            <h4>${launch.Name}</h4>
+                            <p class="launch-mission">Payload: ${launch.Payload || 'Unknown'}</p>
+                            <p>Rocket: ${launch.LaunchType}</p>
+                            <p>Status: ${launch.MissionStatus}</p>
                         </div>
                     `;
                 });
                 
                 if (launchesHTML === '') {
-                    launchesContainer.innerHTML = '<p>No upcoming SpaceX launches found.</p>';
+                    launchesContainer.innerHTML = '<p>No recent ISRO missions found.</p>';
                 } else {
                     launchesContainer.innerHTML = launchesHTML;
                 }
             }
         } catch (error) {
-            console.error('Error fetching SpaceX launches:', error);
-            launchesContainer.innerHTML = '<p>Failed to load upcoming SpaceX launches. Please try again later.</p>';
+            console.error('Error fetching ISRO missions:', error);
+            launchesContainer.innerHTML = '<p>Failed to load recent ISRO missions. Please try again later.</p>';
         }
     }
     
-    // Space News API for latest news
     async function fetchSpaceNewsPreview() {
         try {
             const response = await fetch('https://api.spaceflightnewsapi.net/v4/articles/?limit=3');
