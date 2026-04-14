@@ -81,26 +81,30 @@ document.addEventListener('DOMContentLoaded', function() {
         
         try {
             // Build query parameters
-            let url = `https://api.spaceflightnewsapi.net/v3/articles?_limit=${articlesPerPage}&_start=${(currentPage - 1) * articlesPerPage}`;
+            let url = `https://api.spaceflightnewsapi.net/v4/articles/?limit=${articlesPerPage}&offset=${(currentPage - 1) * articlesPerPage}`;
             
             // Add search term if provided
+            let searchQuery = '';
             if (currentSearch) {
-                url += `&title_contains=${encodeURIComponent(currentSearch)}`;
+                searchQuery += currentSearch;
             }
             
             // Add filter if not 'all'
             if (currentFilter !== 'all') {
-                url += `&categories_contains=${encodeURIComponent(currentFilter)}`;
+                searchQuery += (searchQuery ? ' ' : '') + currentFilter;
+            }
+            
+            if (searchQuery) {
+                url += `&search=${encodeURIComponent(searchQuery)}`;
             }
             
             // Fetch articles
             const articlesResponse = await fetch(url);
-            const articles = await articlesResponse.json();
+            const data = await articlesResponse.json();
+            const articles = data.results;
             
             // Fetch total count for pagination
-            const countUrl = url.replace(`_limit=${articlesPerPage}&_start=${(currentPage - 1) * articlesPerPage}`, '_limit=0');
-            const countResponse = await fetch(countUrl);
-            const totalCount = parseInt(countResponse.headers.get('x-total-count') || '0');
+            const totalCount = data.count || 0;
             
             totalPages = Math.ceil(totalCount / articlesPerPage);
             
@@ -126,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let newsHTML = '';
             
             articles.forEach(article => {
-                const publishDate = new Date(article.publishedAt);
+                const publishDate = new Date(article.published_at);
                 const formattedDate = publishDate.toLocaleDateString('en-US', {
                     month: 'long',
                     day: 'numeric',
@@ -136,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 newsHTML += `
                     <div class="news-article">
                         <div class="news-article-image">
-                            <img src="${article.imageUrl}" alt="${article.title}">
+                            <img src="${article.image_url}" alt="${article.title}">
                         </div>
                         <div class="news-article-content">
                             <div class="news-article-date">${formattedDate}</div>

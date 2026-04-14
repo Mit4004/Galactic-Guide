@@ -184,14 +184,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Space News API for latest news
     async function fetchSpaceNewsPreview() {
         try {
-            const response = await fetch('https://api.spaceflightnewsapi.net/v3/articles?_limit=3');
-            const articles = await response.json();
+            const response = await fetch('https://api.spaceflightnewsapi.net/v4/articles/?limit=3');
+            const data = await response.json();
+            const articles = data.results;
             
             if (articles && newsPreviewContainer) {
                 let newsHTML = '';
                 
                 articles.forEach(article => {
-                    const publishDate = new Date(article.publishedAt);
+                    const publishDate = new Date(article.published_at);
                     const formattedDate = publishDate.toLocaleDateString('en-US', {
                         month: 'long',
                         day: 'numeric',
@@ -201,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     newsHTML += `
                         <div class="news-item">
                             <div class="news-image">
-                                <img src="${article.imageUrl}" alt="${article.title}">
+                                <img src="${article.image_url}" alt="${article.title}">
                             </div>
                             <div class="news-date">${formattedDate}</div>
                             <h4 class="news-title">${article.title}</h4>

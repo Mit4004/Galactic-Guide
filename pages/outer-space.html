@@ -96,6 +96,14 @@
             <div class="loading-spinner"></div>
         </div>
         
+        <div class="interactive-galaxy-container" style="width: 100%; height: 500px; margin: 40px 0; border-radius: 15px; overflow: hidden; position: relative; box-shadow: 0 0 30px rgba(100, 150, 255, 0.2);">
+            <div style="position: absolute; top: 15px; left: 15px; color: white; z-index: 10; font-family: 'Orbitron', sans-serif; pointer-events: none; text-shadow: 0 0 5px black;">
+                <h3 style="margin:0; font-size: 1.5rem; color: #8af;">Interactive 3D Galaxy</h3>
+                <p style="margin:5px 0 0 0; font-size: 0.9rem; opacity: 0.8; font-family: 'Space Mono', monospace;">Drag to rotate • Scroll to zoom</p>
+            </div>
+            <div id="three-container" style="width: 100%; height: 100%;"></div>
+        </div>
+        
         <div class="cosmic-scale">
             <h3>The Cosmic Scale</h3>
             <p>Drag the slider to explore different scales of the universe, from planets to the observable universe.</p>
@@ -157,10 +165,13 @@
     </footer>
 
     <!-- JavaScript Files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.134.0/examples/js/controls/OrbitControls.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/navigation.js"></script>
     <script src="../js/modal.js"></script>
     <script src="../js/cosmic-scale.js"></script>
     <script src="../js/outer-space.js"></script>
+    <script src="../js/three-scene.js"></script>
 </body>
 </html>
