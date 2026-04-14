@@ -75,68 +75,51 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     async function fetchAstronomicalEvents() {
-        try {
-            const today = new Date();
-            const nextWeek = new Date(today);
-            nextWeek.setDate(nextWeek.getDate() + 7);
-            
-            const startDate = today.toISOString().split('T')[0];
-            const endDate = nextWeek.toISOString().split('T')[0];
-            
-            const response = await fetch(`https://api.nasa.gov/neo/rest/v1/feed?start_date=${startDate}&end_date=${endDate}&api_key=${NASA_API_KEY}`);
-            const data = await response.json();
-            
-            if (data.error) {
-                if (eventsContainer) eventsContainer.innerHTML = '<p style="color:#ffaaaa">NASA API rate limit exceeded. Get a free key at api.nasa.gov.</p>';
-                return;
-            }
-            
-            if (data && data.near_earth_objects && eventsContainer) {
-                let eventsHTML = '';
-                let eventCount = 0;
-                
-                for (const [date, neos] of Object.entries(data.near_earth_objects)) {
-                    neos.sort((a, b) => {
-                        return a.close_approach_data[0].miss_distance.kilometers - b.close_approach_data[0].miss_distance.kilometers;
-                    });
-                    
-                    if (neos.length > 0 && eventCount < 3) {
-                        const neo = neos[0];
-                        const approachDate = new Date(neo.close_approach_data[0].close_approach_date);
-                        const formattedDate = approachDate.toLocaleDateString('en-US', {
-                            month: 'long',
-                            day: 'numeric',
-                            year: 'numeric'
-                        });
-                        
-                        const distance = parseFloat(neo.close_approach_data[0].miss_distance.kilometers).toLocaleString();
-                        const diameter = parseFloat(neo.estimated_diameter.kilometers.estimated_diameter_max).toFixed(2);
-                        const hazardous = neo.is_potentially_hazardous_asteroid ? 'Yes' : 'No';
-                        
-                        eventsHTML += `
-                            <div class="event">
-                                <div class="event-date">${formattedDate}</div>
-                                <h4>${neo.name}</h4>
-                                <p>Distance from Earth: ${distance} km</p>
-                                <p>Estimated Diameter: ${diameter} km</p>
-                                <p>Potentially Hazardous: ${hazardous}</p>
-                            </div>
-                        `;
-                        
-                        eventCount++;
-                    }
-                }
-                
-                if (eventsHTML === '') {
-                    eventsContainer.innerHTML = '<p>No upcoming astronomical events found.</p>';
-                } else {
-                    eventsContainer.innerHTML = eventsHTML;
-                }
-            }
-        } catch (error) {
-            console.error('Error fetching astronomical events:', error);
-            eventsContainer.innerHTML = '<p>Failed to load upcoming astronomical events. Please try again later.</p>';
+        if (!eventsContainer) return;
+
+        const allEvents = [
+            { date: '2025-04-13', name: 'Meteor Shower: Virginids Peak', icon: '☄️', description: 'The Virginids meteor shower reaches its peak activity, visible after midnight in dark skies.' },
+            { date: '2025-04-16', name: 'Full Moon — Pink Moon', icon: '🌕', description: "April's full moon, traditionally called the Pink Moon. Best viewed at moonrise on the horizon." },
+            { date: '2025-05-06', name: 'Meteor Shower: Eta Aquariids Peak', icon: '☄️', description: "Debris from Halley's Comet lights up the sky. Up to 50 meteors per hour visible before dawn." },
+            { date: '2025-05-13', name: 'Full Moon — Flower Moon', icon: '🌕', description: "May's full moon rises large and bright. A great time for moonlit stargazing." },
+            { date: '2025-06-11', name: 'Full Moon — Strawberry Moon', icon: '🌕', description: "June's full moon, also the closest full moon to the summer solstice this year." },
+            { date: '2025-06-21', name: 'Summer Solstice', icon: '☀️', description: "The longest day of the year in the Northern Hemisphere — Earth's north pole is tilted closest to the Sun." },
+            { date: '2025-07-10', name: 'Full Moon — Buck Moon', icon: '🌕', description: "July's full moon coincides with peak meteor shower season. Named for new antler growth on deer." },
+            { date: '2025-07-28', name: 'Meteor Shower: Delta Aquariids Peak', icon: '☄️', description: 'Up to 20 meteors per hour streak across the sky from the direction of Aquarius.' },
+            { date: '2025-08-09', name: 'Full Moon — Sturgeon Moon', icon: '🌕', description: "August's full moon. Watch for a super moon effect if it falls near lunar perigee." },
+            { date: '2025-08-12', name: 'Meteor Shower: Perseids Peak', icon: '☄️', description: 'One of the best meteor showers of the year — up to 100 meteors per hour under dark skies!' },
+            { date: '2025-09-07', name: 'Total Lunar Eclipse', icon: '🌑', description: 'The Moon passes fully into Earth\'s shadow, turning deep red. Visible from Europe, Africa, and Asia.' },
+            { date: '2025-09-21', name: 'Autumnal Equinox', icon: '🌍', description: 'Day and night are nearly equal in length worldwide. Marks the start of astronomical autumn.' },
+            { date: '2025-10-08', name: 'Meteor Shower: Draconids Peak', icon: '☄️', description: 'A brief but intense flurry of meteors from Comet 21P. Best viewed at dusk.' },
+            { date: '2025-10-21', name: 'Meteor Shower: Orionids Peak', icon: '☄️', description: "Another gift from Halley's Comet — up to 25 meteors per hour radiate from Orion." },
+            { date: '2025-11-17', name: 'Meteor Shower: Leonids Peak', icon: '☄️', description: 'The Leonids can occasionally produce meteor storms. Even in quiet years expect 15 or more per hour.' },
+            { date: '2025-12-13', name: 'Meteor Shower: Geminids Peak', icon: '☄️', description: 'The king of meteor showers — up to 120 colorful meteors per hour from asteroid 3200 Phaethon.' },
+            { date: '2025-12-21', name: 'Winter Solstice', icon: '❄️', description: 'The shortest day of the year in the Northern Hemisphere. Marks the start of astronomical winter.' },
+            { date: '2026-02-17', name: 'Annular Solar Eclipse', icon: '🌑', description: 'The Moon covers the center of the Sun, leaving a brilliant ring of fire visible along its path.' },
+            { date: '2026-08-12', name: 'Total Solar Eclipse', icon: '🌑', description: 'A total solar eclipse crosses parts of Europe and North Africa — a rare and breathtaking event.' },
+        ];
+
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        const upcoming = allEvents.filter(e => new Date(e.date) >= today).slice(0, 3);
+
+        if (upcoming.length === 0) {
+            eventsContainer.innerHTML = '<p>No upcoming events found.</p>';
+            return;
         }
+
+        eventsContainer.innerHTML = upcoming.map(event => {
+            const d = new Date(event.date);
+            const formattedDate = d.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+            return `
+                <div class="event">
+                    <div class="event-date">${formattedDate}</div>
+                    <h4>${event.icon} ${event.name}</h4>
+                    <p>${event.description}</p>
+                </div>
+            `;
+        }).join('');
     }
     
     async function fetchISROLaunches() {
