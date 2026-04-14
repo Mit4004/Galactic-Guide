@@ -14,6 +14,16 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentFilter = 'all';
     let currentSearch = '';
     
+    // Check if there is a search query coming from the homepage
+    const urlParams = new URLSearchParams(window.location.search);
+    const incomingSearch = urlParams.get('search');
+    if (incomingSearch) {
+        currentSearch = incomingSearch;
+        if (newsSearchInput) {
+            newsSearchInput.value = incomingSearch;
+        }
+    }
+    
     if (newsContainer) {
         fetchSpaceNews();
     }

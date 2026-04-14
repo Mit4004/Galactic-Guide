@@ -3,7 +3,7 @@
       {
         "id": "mercury",
         "name": "Mercury",
-        "image": "https://www.cronodon.com/images/mercury-5.jpg",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/d/d9/Mercury_in_color_-_Prockter07-edit1.jpg",
         "shortDescription": "The smallest and innermost planet",
         "description": "Mercury is the smallest and innermost planet in the Solar System. It is named after the Roman deity Mercury, the messenger of the gods.",
         "facts": [
@@ -24,7 +24,7 @@
       {
         "id": "venus",
         "name": "Venus",
-        "image": "https://preview.redd.it/hpdqtm0d3kn31.jpg?auto=webp&s=3ca3932838f4f74f8359acf48052b67235b3ab12",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg",
         "shortDescription": "Earth's closest planetary neighbor",
         "description": "Venus is the second planet from the Sun and is Earth's closest planetary neighbor. It's one of the four inner, terrestrial planets, and it's often called Earth's twin because it's similar in size and density.",
         "facts": [
@@ -45,7 +45,7 @@
       {
         "id": "earth",
         "name": "Earth",
-        "image": "https://th.bing.com/th/id/OIP.Qe9PYMsh2gQWtgeEHY8-UQHaHa?rs=1&pid=ImgDetMain",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg",
         "shortDescription": "Our home planet",
         "description": "Earth is the third planet from the Sun and the only astronomical object known to harbor life. About 71% of Earth's surface is covered with water, with the remaining 29% consisting of continents and islands.",
         "facts": [
@@ -66,7 +66,7 @@
       {
         "id": "mars",
         "name": "Mars",
-        "image": "https://th.bing.com/th/id/OIP.H-gWY6WmsEYUkDfr3QsnngHaE7?rs=1&pid=ImgDetMain",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg",
         "shortDescription": "The Red Planet",
         "description": "Mars is the fourth planet from the Sun and the second-smallest planet in the Solar System, being larger than only Mercury. It is often referred to as the \"Red Planet\" because of its reddish appearance.",
         "facts": [
@@ -87,7 +87,7 @@
       {
         "id": "jupiter",
         "name": "Jupiter",
-        "image": "https://cdn.sci.news/images/enlarge4/image_5608_2e-Jupiter.jpg",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/e/e2/Jupiter.jpg",
         "shortDescription": "The largest planet in our solar system",
         "description": "Jupiter is the fifth planet from the Sun and the largest in the Solar System. It is a gas giant with a mass more than two and a half times that of all the other planets in the Solar System combined.",
         "facts": [
@@ -108,7 +108,7 @@
       {
         "id": "saturn",
         "name": "Saturn",
-        "image": "https://nssdc.gsfc.nasa.gov/image/planetary/saturn/saturn_false.jpg",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/c/c7/Saturn_during_Equinox.jpg",
         "shortDescription": "Famous for its spectacular ring system",
         "description": "Saturn is the sixth planet from the Sun and the second-largest in the Solar System, after Jupiter. It is a gas giant with an average radius about nine times that of Earth.",
         "facts": [
@@ -129,7 +129,7 @@
       {
         "id": "uranus",
         "name": "Uranus",
-        "image": "https://th.bing.com/th/id/R.4cdcbeb2b0c704536e411f3dc18eb6cd?rik=pK6ynZFigzMipA&riu=http%3a%2f%2fwww.darvill.clara.net%2fspace%2fimages%2furanus1.jpg&ehk=eaiKcKbfNY2Q0m4qHLl06RDeDIg4Je6UbxDc0RCNQzY%3d&risl=&pid=ImgRaw&r=0",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/3/3d/Uranus2.jpg",
         "shortDescription": "The sideways planet",
         "description": "Uranus is the seventh planet from the Sun. It has the third-largest planetary radius and fourth-largest planetary mass in the Solar System. It is an ice giant, similar in composition to Neptune.",
         "facts": [
@@ -150,7 +150,7 @@
       {
         "id": "neptune",
         "name": "Neptune",
-        "image": "https://www.worldatlas.com/r/w1200-h630-c1200x630/upload/75/ac/2c/shutterstock-521649988.jpg",
+        "image": "https://upload.wikimedia.org/wikipedia/commons/6/63/Neptune_-_Voyager_2_%2829347980845%29_flatten_crop.jpg",
         "shortDescription": "The windiest planet",
         "description": "Neptune is the eighth and farthest known planet from the Sun in the Solar System. It is the fourth-largest planet by diameter, the third-most-massive planet, and the densest giant planet.",
         "facts": [

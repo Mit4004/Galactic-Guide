@@ -115,6 +115,25 @@ main {
     padding: 2rem;
 }
 
+/* Page Transitions */
+body:not(.loaded) header,
+body:not(.loaded) main,
+body:not(.loaded) footer {
+    opacity: 0;
+    transform: translateY(15px);
+}
+
+header, main, footer {
+    transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+body.exiting header,
+body.exiting main,
+body.exiting footer {
+    opacity: 0;
+    transform: translateY(-15px);
+}
+
 /* Back Button */
 .back-button {
     display: inline-block;
